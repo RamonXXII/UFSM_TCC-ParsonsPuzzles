@@ -1,0 +1,21 @@
+a {
+    color:black;
+    padding: 5px 10px;
+    border-radius: 15%;
+}
+
+#newInstanceLink {
+    background-color:aqua;
+}
+
+#feedbackLink {
+    background-color: aqua;
+}
+
+.btnDica {
+    background-color: orange;
+}
+
+#nextLevel {
+    background-color: greenyellow;
+}

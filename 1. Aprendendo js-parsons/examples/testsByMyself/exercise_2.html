@@ -5,11 +5,13 @@
         <title>Exercício de Problemas de Parsons</title>
         <link href="../../parsons.css" rel="stylesheet" />
         <link href="../../lib/prettify.css" rel="stylesheet" />
+        <link href="./personalStyle.css" rel="stylesheet"/>
         <script src="../../lib/prettify.js"></script>
     </head>
     <body>
         <h2>Exercício de Problemas de Parsons</h2>
-        <p></p>
+        <!-- DICA -->
+        <p id="dica" hidden>Dica: Atenção com a identação do código gerado.</p>
         <div id="sortableTrash" class="sortable-code"></div>
         <div id="sortable" class="sortable-code">
         </div>
@@ -17,7 +19,8 @@
         <p>
             <a href="#" id="newInstanceLink">Resetar</a>
             <a href="#" id="feedbackLink">Feedback</a>
-            <a href="/exercise-2" id="nextLevel" hidden>Próximo Nivel</a>
+            <a href="#" class="btnDica">Dica</a> <!-- DICA -->
+            <a href="exercise_1.html" id="nextLevel" hidden>Próximo Nivel</a>
         </p>
         <script src="../../lib/jquery.min.js"></script>
         <script src="../../lib/jquery-ui.min.js"></script>
@@ -63,6 +66,11 @@
                 }
             });
         });
+
+        $(".btnDica").click(function() {
+            $("#dica").show();
+        });
+
         </script>
     </body>
 </html>
