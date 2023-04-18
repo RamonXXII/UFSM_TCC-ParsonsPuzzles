@@ -6,8 +6,8 @@
     margin-left: 2%;
     float: left;
 }
-#sortableTrash { width: 40%; }
-#sortable { width: 50%; }
+#sortableTrash { width: 42%; }
+#sortable { width: 53%; }
 .sortable-code ul {
     font-size: 120%;
     font-family: monospace;
