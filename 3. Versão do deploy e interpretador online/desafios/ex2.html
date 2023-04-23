@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Praticando Python Introdutório</title>
+        
+        <link rel="icon" href="../assets/Python-logo-notext.ico">
+
+        <link href="../parsons.css" rel="stylesheet" />
+        <link href="../lib/prettify.css" rel="stylesheet" />
+        <link href="../personalStyle.css" rel="stylesheet"/>
+        <script src="../lib/prettify.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div class="container justify-content-center">
+            <div class="row">
+                <h2 class="pageTitle">Praticando Python Introdutório</h2>
+            </div>
+
+            <div class="row">
+                <div class="introducao">
+                    <p class="enunciado">Organize as linhas de código na ordem correta.</p>
+                    <p class="enunciadoSecundario"></p>
+                </div>
+            </div>
+
+            <!-- DICA -->
+            <div class="codeBlocks">
+                <div id="sortableTrash" class="sortable-code"></div>
+                <div id="sortable" class="sortable-code"></div>
+            </div>
+                
+            <div style="clear:both;"></div>
+            
+            <div class="buttons">
+                <a href="#" id="newInstanceLink">Resetar</a>
+                <a href="#" id="feedbackLink">Conferir</a>
+                <a href="#" id="btnDica">Dica</a> <!-- DICA -->
+                <a href="#" id="nextLevel" hidden>Próximo Nivel</a>
+            </div>
+            
+            <div class="row">
+                <p class="dica" hidden></p>
+                <div class="correctConfirmationArea">
+                    <p id="correctConfirmation" hidden>Parabéns, você acertou! Agora siga para o próximo nível!</p>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Script -->
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/jquery-ui.min.js"></script>
+        <script src="../lib/jquery.ui.touch-punch.min.js"></script>
+        <script src="../lib/underscore-min.js"></script>
+        <script src="../lib/lis.js"></script>
+        <script src="../parsons.js"></script>
+        <script src="./definicaoDosExercicios.js"></script>
+        <script>
+        // Controle de níveis
+        var initial = exercicios['ex2'];
+        $(".enunciadoSecundario").append(enunciados['ex2']);
+        $('.dica').append(dicas['ex2']);
+        $("#nextLevel").attr("href", "./ex3.html");
+        // Fim do controle de níveis
+
+        function displayErrors(fb) {
+            if(fb.errors.length > 0) {
+                alert(fb.errors[0]);
+            }
+        } 
+
+        $(document).ready(function(){
+            var parson = new ParsonsWidget({
+                'sortableId': 'sortable',
+                'trashId': 'sortableTrash',
+                'max_wrong_lines': 1,
+                'feedback_cb' : displayErrors,
+                'lang': 'ptbr'
+            });
+            parson.init(initial);
+            parson.shuffleLines();
+            $("#newInstanceLink").click(function(event){
+                event.preventDefault();
+                parson.shuffleLines();
+            });
+            $("#feedbackLink").click(function(event){
+                event.preventDefault();
+                var fb = parson.getFeedback();
+                if (fb.success) {
+                    $("#correctConfirmation").show().css("display", "inline-block");
+                    $("#nextLevel").show();
+                }
+            });
+        });
+
+        $("#btnDica").click(function() {
+            $(".dica").show();
+        });
+
+        </script>
+    </body>
+</html>
