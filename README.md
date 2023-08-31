@@ -13,7 +13,7 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 ## Anotações importantes sobre o uso de JS-Parsons
 
 **Caso queira testar o valor de retorno e ver se uma função está executando da forma certa**  
-  * usar unittests (ver [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html))
+  * usar unittests (ver [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html) e [unittestexample.html](/1.%20Aprendendo%20js-parsons/examples/unittestexample.html))
 
 **Caso queira testar o valor de cada variável no final do código**  
   * usar vartests (ver [toggle-variable-grader-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-variable-grader-example.html))
@@ -25,7 +25,7 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 * ```'trashId'```: O ID usado na ```<div>``` HTML que vai conter os elementos a serem organizados.
 * ```'sortableId'```: O ID usado na ```<div>``` HTML que vai conter a solução após as linhas de código serem organizadas.
 * ```'lang'```: A biblioteca possui vários idiomas disponíveis para feedback, avisos, etc, e foi adicionado mais um *(ptbr)* para o uso neste trabalho.
-* ```'unittests'```: Os testes unitários a serem realizados (para ver como são feitos, veja [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html)).
+* ```'unittests'```: Os testes unitários a serem realizados (para ver como são feitos, veja [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html) e [unittestexample.html](/1.%20Aprendendo%20js-parsons/examples/unittestexample.html)).
 * ```'initcode'```: Código a ser executado antes do código do desafio.
 * ```'code'```: Código a ser executado após o código do desafio.
 * ```'toggleTypeHandlers'```: Objeto com os tipos de variáveis disponíveis para dar *toggle* no exercício, geralmente necessita testes unitários (ver [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html)).
@@ -33,7 +33,7 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
   * O ```data-type``` no código do desafio deve ter o mesmo nome do objeto que contem a lista de variáveis a serem escolhidas, veja as imagens abaixo.
   *A definição é feita desta forma no meio do código a ser embaralhado:*  
   <img src="/assets/toggleTypeHandlersExemplo2.png" width="650"> 
-  
+
   *A chamada é feita desta forma:*
   <img src="/assets/toggleTypeHandlersExemplo.png" width="650"> 
 
@@ -56,3 +56,12 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
   **OU**
   * ```'variable'```: O nome da variável que será testada.
   * ```'expected'```: O valor esperado para a variável após a execução do código.
+
+**Para setar o código a ser executado, é necessário escrever o código inteiro como uma string e enviá-la através da chamada de função ```.init(codigo)``` e, logo após, embaralhar as linhas com ```.shuffleLines()```:
+```javascript
+var parson = new ParsonsWidget({
+    // parametros aqui
+  });
+parson.init(codigo);
+parson.shuffleLines();
+```
