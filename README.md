@@ -32,9 +32,11 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
   * A ```class``` no código do desafio deve ser definida com ```jsparsons-toggle```.
   * O ```data-type``` no código do desafio deve ter o mesmo nome do objeto que contem a lista de variáveis a serem escolhidas, veja as imagens abaixo.
   *A definição é feita desta forma no meio do código a ser embaralhado:*  
-  ![Imagem 1](/assets/toggleTypeHandlersExemplo2.png#img)
+  <img src="/assets/toggleTypeHandlersExemplo2.png" width="650"> 
+
   *A chamada é feita desta forma:*
-  ![Imagem 2](/assets/toggleTypeHandlersExemplo.png#img)  
+  <img src="/assets/toggleTypeHandlersExemplo.png" width="650"> 
+
   * O ```'toggleTypeHandlers'``` possui alguns tipos padrão já definidos, são eles:
     ```javascript
     {
@@ -47,24 +49,10 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
     Para estes, não é preciso definir seus valores no ```toggleTypeHandlers```, apenas settar o ```data-type``` como ```boolean```, ```compop```, ```mathop``` ou ```boolop```.
 * ```'message'```: Uma mensagem textual do teste que seu código será submetido, para ser mostrada ao usuário.
 * ```'vartests'```: Lista de objetos com os dados necessários para fazer testes de valores com variáveis, para verificar se variável ```x``` está com valor ```2``` após a execução do código, por exemplo. (ver [toggle-variable-grader-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-variable-grader-example.html))
-<img src="/assets/vartestsExemplo.png" width="400">  
+<img src="/assets/vartestsExemplo.png" width="650">  
 
   **Aqui você pode enviar:**
   * ```'variables'```: Um objeto com as propriedades para cada variável que será testada.
   **OU**
   * ```'variable'```: O nome da variável que será testada.
   * ```'expected'```: O valor esperado para a variável após a execução do código.
-
-
-
-
-
-
-
-<style>
-img[src$="#img"] {
-  border-radius:0.5rem;
-  box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
-  max-width: 38rem;
-}
-</style>
