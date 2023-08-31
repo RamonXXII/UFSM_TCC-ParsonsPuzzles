@@ -47,7 +47,7 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
     Para estes, não é preciso definir seus valores no ```toggleTypeHandlers```, apenas settar o ```data-type``` como ```boolean```, ```compop```, ```mathop``` ou ```boolop```.
 * ```'message'```: Uma mensagem textual do teste que seu código será submetido, para ser mostrada ao usuário.
 * ```'vartests'```: Lista de objetos com os dados necessários para fazer testes de valores com variáveis, para verificar se variável ```x``` está com valor ```2``` após a execução do código, por exemplo. (ver [toggle-variable-grader-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-variable-grader-example.html))
-<img src="/assets/vartestsExemplo.png" max-width="38rem" border-radius="0.5rem">  
+<img src="/assets/vartestsExemplo.png" width="400">  
 
   **Aqui você pode enviar:**
   * ```'variables'```: Um objeto com as propriedades para cada variável que será testada.
