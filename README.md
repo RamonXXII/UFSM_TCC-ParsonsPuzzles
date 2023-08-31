@@ -33,8 +33,10 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
   * O ```data-type``` no código do desafio deve ter o mesmo nome do objeto que contem a lista de variáveis a serem escolhidas, veja as imagens abaixo.
   *A definição é feita desta forma no meio do código a ser embaralhado:*  
   <img src="/assets/toggleTypeHandlersExemplo2.png" width="650"> 
+  
   *A chamada é feita desta forma:*
   <img src="/assets/toggleTypeHandlersExemplo.png" width="650"> 
+
   * O ```'toggleTypeHandlers'``` possui alguns tipos padrão já definidos, são eles:
     ```javascript
     {
