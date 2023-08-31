@@ -64,6 +64,6 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 img[src$="#img"] {
   border-radius:0.5rem;
   box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.2);
-  max-width: 38rem;
+  max-width: 30rem;
 }
 </style>
