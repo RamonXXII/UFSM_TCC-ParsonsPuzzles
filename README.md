@@ -2,12 +2,12 @@
  
 Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC. Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
 
-|   Etapa   |   Repositório   |
-|-----------|-----------------|
-| Entender e aprender a usar js-parsons e desenvolver alguns problemas próprios usando o site oficial como norte. | [Repositório](/1.%20Aprendendo%20js-parsons/) |
-| Testar JS-Parsons com uma UI um pouco mais amigável | [Respositório](/2.%20Testando%20js-parsons%20(com%20UI)/) |
-| Testar com vários tipos diferentes de exercícios (testes unitários e vartests) e publicar na web de alguma forma | [Repositório](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
-| Versão com Back e Front end, API com exercícios, remodelar o front para ser mais amigável | [Repositório](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
+|            Etapa           |
+|----------------------------|
+| [Entender e aprender a usar js-parsons e desenvolver alguns problemas próprios usando o site oficial como norte.](/1.%20Aprendendo%20js-parsons/) |
+| [Testar JS-Parsons com uma UI um pouco mais amigável.](/2.%20Testando%20js-parsons%20(com%20UI)/) |
+| [Testar com vários tipos diferentes de exercícios (testes unitários e vartests) e publicar na web de alguma forma.](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
+| [Versão com Back e Front end, API com exercícios, remodelar o front para ser mais amigável](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
 
 ## Anotações importantes sobre o uso de JS-Parsons
 
