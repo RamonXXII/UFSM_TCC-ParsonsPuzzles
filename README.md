@@ -1,6 +1,6 @@
 # TCC-ParsonsPuzzles
  
-Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC.
+Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC. Mais informações sobre o design [clicando aqui]().
 
 |   Etapa   |   Repositório   |
 |-----------|-----------------|
@@ -8,7 +8,6 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 | Testar JS-Parsons com uma UI um pouco mais amigável | [Respositório](/2.%20Testando%20js-parsons%20(com%20UI)/) |
 | Testar com vários tipos diferentes de exercícios (testes unitários e vartests) e publicar na web de alguma forma | [Repositório](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
 | Versão com Back e Front end, API com exercícios, remodelar o front para ser mais amigável | [Repositório](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
-
 
 ## Anotações importantes sobre o uso de JS-Parsons
 
@@ -57,7 +56,7 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
   * ```'variable'```: O nome da variável que será testada.
   * ```'expected'```: O valor esperado para a variável após a execução do código.
 
-**Para setar o código a ser executado, é necessário escrever o código inteiro como uma string e enviá-la através da chamada de função ```.init(codigo)``` e, logo após, embaralhar as linhas com ```.shuffleLines()```:
+**Para setar o código a ser executado, é necessário escrever o código inteiro como uma string e enviá-la através da chamada de função ```.init(codigo)``` e, logo após, embaralhar as linhas com ```.shuffleLines()```:**
 ```javascript
 var parson = new ParsonsWidget({
     // parametros aqui
