@@ -1,6 +1,6 @@
 # TCC-ParsonsPuzzles
  
-Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC. Mais informações sobre o design [clicando aqui]().
+Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC. Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
 
 |   Etapa   |   Repositório   |
 |-----------|-----------------|
