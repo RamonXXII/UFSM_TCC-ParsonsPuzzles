@@ -8,6 +8,6 @@ O layout foi altamente inspirado no site [python sponge](https://www.pythonspong
 A paleta de cores utilizada na plataforma foi, basicamente, o tema [Dracula](https://draculatheme.com/contribute), um dos temas escuros mais famosos feitos para o VSCode (com algumas adições e leves modificações nas cores).
 
 ## Tipografia
-A fonte utilizada para os enunciados é Montserrat (600 para título, 300 para texto), uma fonte altamente recomendada entre designers para plataformas digitais, pois passa uma sensação de conforto, além de ser de fácil leitura.
+A fonte utilizada para os enunciados é [Montserrat](https://fonts.google.com/specimen/Montserrat) (600 para título, 300 para texto), uma fonte altamente recomendada entre designers para plataformas digitais, pois passa uma sensação de conforto, além de ser de fácil leitura.
 
-Já a fonte utilizada para o código e o feedback recebido pelo usuário é Space Mono (700 para título, 400 para texto), uma fonte mono-espaçada, comumente usada para remeter à tecnologia e programação num geral, para passar a sensação de retorno de um programa. Também é considerada de fácil leitura.
+Já a fonte utilizada para o código e o feedback recebido pelo usuário é [Space Mono](https://fonts.google.com/specimen/Space+Mono) (700 para título, 400 para texto), uma fonte mono-espaçada, comumente usada para remeter à tecnologia e programação num geral, para passar a sensação de retorno de um programa. Também é considerada de fácil leitura.
