@@ -24,6 +24,10 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 * ```'trashId'```: O ID usado na ```<div>``` HTML que vai conter os elementos a serem organizados.
 * ```'sortableId'```: O ID usado na ```<div>``` HTML que vai conter a solução após as linhas de código serem organizadas.
 * ```'lang'```: A biblioteca possui vários idiomas disponíveis para feedback, avisos, etc, e foi adicionado mais um *(ptbr)* para o uso neste trabalho.
+* ```'max_wrong_lines'```: O máximo de linhas erradas (distratores) que serão mostradas pro usuário. Caso você tenha colocado mais de ```<max_wrong_lines>``` distratores, o script irá escolher a quantidade ```<max_wrong_lines>``` deles aleatóriamente para mostrar ao usuário.
+* ```'feedback_cb'```: Referência à uma função definida por você para mostrar os erros retornados do exercício, caso haja algum. Exemplo:
+<img src="/assets/displayErrors.png" width="650"> 
+
 * ```'unittests'```: Os testes unitários a serem realizados (para ver como são feitos, veja [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html) e [unittestexample.html](/1.%20Aprendendo%20js-parsons/examples/unittestexample.html)).
 * ```'initcode'```: Código a ser executado antes do código do desafio.
 * ```'code'```: Código a ser executado após o código do desafio.
