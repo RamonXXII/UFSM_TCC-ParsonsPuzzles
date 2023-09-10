@@ -1,6 +1,4 @@
-* {
-  outline: 1px solid red;
-}
+
 
 body {
   margin: 0px;
@@ -18,6 +16,8 @@ a:hover {
 a {
   text-decoration: none;
 }
+
+/* MASTER CONTAINER */
 
 #master-container {
   display: flex;
@@ -37,11 +37,61 @@ a {
     "enunciado-area feedback-area feedback-area";
 }
 
+/* NAVBAR RELATED */
+
 .navbar { 
   grid-area: navbar; 
   background-color: #282a36;
   border-bottom: 1px solid #676c88;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.progressbar-background {
+  display: inline-block;
+  border-radius: 60px;
+  width: 40rem;
+  background-color: #44475a;
+}
+
+.progressbar-progress {
+  display: inline-block;
+  border-radius: 60px;
+  height:15px;
+  width:50%;
+  background-color: #50fa7b;
+}
+
+.progressbar-progress-text {
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.current-level {
+  display: inline-block;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: smaller;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-right: 10px;
+}
+
+.next-level {
+  display: inline-block;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: smaller;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-left: 10px;
+}
+
+/* FEEDBACK RELATED */
 
 .feedback-area { 
   display: grid;
@@ -50,7 +100,7 @@ a {
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "buttons-area"
+    "feedback-title-area"
     "feedback-feedback-area";
   grid-area: feedback-area; 
   background-color: #1a1c23;
@@ -58,30 +108,8 @@ a {
   font-family: 'Space Mono', monospace;
 }
 
-.enunciado-area { 
-  grid-area: enunciado-area; 
-  background-color: #1a1c23;
-  border-right: 1px solid #676c88;
-  font-family: 'Space Mono', monospace;
-  font-weight: 400;
-  color: #f0f0f0;
-}
-
-#enunciadoText {
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.code-area {
-  grid-area: code-area;
-  background-color: #414658;
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  color: #f0f0f0;
-}
-
-.buttons-area {
-  grid-area: buttons-area; 
+.feedback-title-area {
+  grid-area: feedback-title-area; 
   display: flex;
   justify-content: space-between;
 }
@@ -99,8 +127,42 @@ a {
   font-weight: 700;
 }
 
-.buttons {
+/* ENUNCIADO RELATED */
+
+.enunciado-area { 
+  grid-area: enunciado-area; 
+  background-color: #1a1c23;
+  border-right: 1px solid #676c88;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  color: #f0f0f0;
+}
+
+#enunciadoText {
   display: inline-block;
+  margin-top: 20px;
+}
+
+/* CODE AREA RELATED */
+
+.code-area {
+  grid-area: code-area;
+  display: block;
+  background-color: #414658;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+.code-code-area {
+  display: block;
+}
+
+/* CODE RELATED BUTTONS */
+
+.buttons {
+  display: flex;
+  margin-left: 33%;
   justify-self: center;
   align-self: center;
 }
@@ -110,6 +172,7 @@ a {
   font-weight: 600;
   font-size: large;
   color:#1b0722;
+  margin: 15px 5px 0px 5px;
   padding: 5px 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -137,6 +200,8 @@ a {
 #btnSubmit {
   background: #50fa7b;
 }
+
+/* TEXT MARGIN (ENUNCIADO E FEEDBACK) */
 
 .block-margin {
   margin-top: 5px;

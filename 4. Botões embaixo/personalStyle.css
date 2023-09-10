@@ -1,0 +1,190 @@
+
+
+body {
+  margin: 0px;
+  overflow-x:hidden;
+}
+
+h1 {
+  margin: 0px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#master-container {
+  display: flex;
+}
+
+.container {  
+  display: grid;
+  grid-template-columns: 0.6fr 1fr 1fr;
+  grid-template-rows: 80px 2.1fr 1fr;
+  gap: 0px 0px;
+  width: 100vw;
+  height: 100vh;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "navbar navbar navbar"
+    "enunciado-area code-area code-area"
+    "enunciado-area feedback-area feedback-area";
+}
+
+.navbar { 
+  grid-area: navbar; 
+  background-color: #282a36;
+  border-bottom: 1px solid #676c88;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progressbar-background {
+  display: inline-block;
+  border-radius: 60px;
+  width: 40rem;
+  background-color: #44475a;
+}
+
+.progressbar-progress {
+  display: inline-block;
+  border-radius: 60px;
+  height:15px;
+  width:50%;
+  background-color: #50fa7b;
+}
+
+.progressbar-progress-text {
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.current-level {
+  display: inline-block;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: smaller;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-right: 10px;
+}
+
+.next-level {
+  display: inline-block;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: smaller;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-left: 10px;
+}
+
+.feedback-area { 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.3fr 20px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "buttons-area"
+    "feedback-feedback-area";
+  grid-area: feedback-area; 
+  background-color: #1a1c23;
+  border-top: 1px solid #676c88;
+  font-family: 'Space Mono', monospace;
+}
+
+.enunciado-area { 
+  grid-area: enunciado-area; 
+  background-color: #1a1c23;
+  border-right: 1px solid #676c88;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  color: #f0f0f0;
+}
+
+#enunciadoText {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.code-area {
+  grid-area: code-area;
+  background-color: #414658;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+.buttons-area {
+  grid-area: buttons-area; 
+  display: flex;
+  justify-content: space-between;
+}
+
+.feedback-feedback-area { 
+  grid-area: feedback-feedback-area; 
+  font-weight: 400;
+  color: #f0f0f0;
+  margin-top: 20px;
+}
+
+#feedbackTitle {
+  font-family: 'Space Mono', monospace;
+  color: #f0f0f0;
+  font-weight: 700;
+}
+
+.buttons {
+  display: inline-block;
+  justify-self: center;
+  align-self: center;
+}
+
+.buttons a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: large;
+  color:#1b0722;
+  padding: 5px 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: ease 0.2s;
+}
+
+.buttons a:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+#btnReset {
+  color: #dbdbdb;
+  box-shadow: inset 0px 0px 0px 2px #929292;
+}
+
+#btnReset:hover {
+  box-shadow: inset 0px 0px 0px 2px #f1f1f1;
+
+}
+
+#btnChangeExercise {
+  background: #ffb86c;
+}
+
+#btnSubmit {
+  background: #50fa7b;
+}
+
+.block-margin {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
