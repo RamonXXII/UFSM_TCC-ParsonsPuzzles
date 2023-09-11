@@ -91,6 +91,16 @@ a {
   margin-left: 10px;
 }
 
+.menu-icon {
+  margin-right: 3rem;
+  transition: ease 0.2s;
+  color: #f1f1f1;
+}
+
+.menu-icon:hover {
+  color: #50fa7b;
+}
+
 /* FEEDBACK RELATED */
 
 .feedback-area { 
@@ -160,11 +170,19 @@ a {
 
 /* CODE RELATED BUTTONS */
 
+.buttons-notch {
+  background-color: #313542;
+  padding: 10px;
+  border-bottom: 1px solid #676c88;
+  border-radius: 0px 0px 50px 50px;
+  margin: 0px 24% 0px 16%;
+  justify-content: center;
+}
+
 .buttons {
   display: flex;
-  margin-left: 33%;
-  justify-self: center;
-  align-self: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons a {
@@ -172,7 +190,7 @@ a {
   font-weight: 600;
   font-size: large;
   color:#1b0722;
-  margin: 15px 5px 0px 5px;
+  margin: 0px 10px 0px 10px;
   padding: 5px 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
