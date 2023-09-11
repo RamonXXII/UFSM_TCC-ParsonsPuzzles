@@ -17,6 +17,8 @@ a {
   text-decoration: none;
 }
 
+/* MASTER CONTAINER */
+
 #master-container {
   display: flex;
 }
@@ -34,6 +36,8 @@ a {
     "enunciado-area code-area code-area"
     "enunciado-area feedback-area feedback-area";
 }
+
+/* NAVBAR RELATED */
 
 .navbar { 
   grid-area: navbar; 
@@ -87,6 +91,18 @@ a {
   margin-left: 10px;
 }
 
+.menu-icon {
+  margin-right: 3rem;
+  transition: ease 0.2s;
+  color: #f1f1f1;
+}
+
+.menu-icon:hover {
+  color: #50fa7b;
+}
+
+/* FEEDBACK RELATED */
+
 .feedback-area { 
   display: grid;
   grid-template-columns: 1fr;
@@ -94,7 +110,7 @@ a {
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "buttons-area"
+    "feedback-title-area"
     "feedback-feedback-area";
   grid-area: feedback-area; 
   background-color: #1a1c23;
@@ -102,30 +118,8 @@ a {
   font-family: 'Space Mono', monospace;
 }
 
-.enunciado-area { 
-  grid-area: enunciado-area; 
-  background-color: #1a1c23;
-  border-right: 1px solid #676c88;
-  font-family: 'Space Mono', monospace;
-  font-weight: 400;
-  color: #f0f0f0;
-}
-
-#enunciadoText {
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.code-area {
-  grid-area: code-area;
-  background-color: #414658;
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  color: #f0f0f0;
-}
-
-.buttons-area {
-  grid-area: buttons-area; 
+.feedback-title-area {
+  grid-area: feedback-title-area; 
   display: flex;
   justify-content: space-between;
 }
@@ -143,10 +137,52 @@ a {
   font-weight: 700;
 }
 
-.buttons {
+/* ENUNCIADO RELATED */
+
+.enunciado-area { 
+  grid-area: enunciado-area; 
+  background-color: #1a1c23;
+  border-right: 1px solid #676c88;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  color: #f0f0f0;
+}
+
+#enunciadoText {
   display: inline-block;
-  justify-self: center;
-  align-self: center;
+  margin-top: 20px;
+}
+
+/* CODE AREA RELATED */
+
+.code-area {
+  grid-area: code-area;
+  display: block;
+  background-color: #414658;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+.code-code-area {
+  display: block;
+}
+
+/* CODE RELATED BUTTONS */
+
+.buttons-notch {
+  background-color: #313542;
+  padding: 10px;
+  border-bottom: 1px solid #676c88;
+  border-radius: 0px 0px 50px 50px;
+  margin: 0px 24% 0px 16%;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons a {
@@ -154,6 +190,7 @@ a {
   font-weight: 600;
   font-size: large;
   color:#1b0722;
+  margin: 0px 10px 0px 10px;
   padding: 5px 20px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -181,6 +218,8 @@ a {
 #btnSubmit {
   background: #50fa7b;
 }
+
+/* TEXT MARGIN (ENUNCIADO E FEEDBACK) */
 
 .block-margin {
   margin-top: 5px;

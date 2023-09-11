@@ -19,6 +19,9 @@
     font-family: 'Montserrat', sans-serif;
     font-family: 'Space Mono', monospace;
   -->
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/fc3f8d6bba.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -40,7 +43,9 @@
         </div>
 
         <div id="menu">
-
+          <a href="#">
+            <i class="menu-icon fa-solid fa-bars fa-2xl"></i>
+          </a>
         </div>
       </div>
 
@@ -54,19 +59,24 @@
       </div>
 
       <div class="code-area">
-        <div id="sortableTrash" class="sortable-code"></div>
-        <div id="sortable" class="sortable-code"></div>
+        <div class="buttons-notch">
+          <div class="buttons">
+            <a href="#" class="button" id="btnSubmit">Run</a>
+            <a href="#" class="button" id="btnReset">Resetar</a>
+            <a href="#" class="button" id="btnChangeExercise">Trocar Exercício</a>
+          </div>
+        </div>
+        <div class="code-code-area">
+          <div id="sortableTrash" class="sortable-code"></div>
+          <div id="sortable" class="sortable-code"></div>
+        </div>
       </div>
 
       <div class="feedback-area">
         <div class="block-margin">
-          <div class="buttons-area">
+          <div class="feedback-title-area">
             <h1 id="feedBackTitle">Feedback:</h1>
-            <div class="buttons">
-              <a href="#" class="button" id="btnReset">Resetar</a>
-              <a href="#" class="button" id="btnChangeExercise">Trocar</a>
-              <a href="#" class="button" id="btnSubmit">Verificar</a>
-            </div>
+
           </div>
 
           <div class="feedback-feedback-area">
