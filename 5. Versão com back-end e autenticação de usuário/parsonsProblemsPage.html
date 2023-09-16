@@ -1,0 +1,158 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Praticando Python Introdutório</title>
+
+  <link rel="icon" href="./assets/Python-logo-notext.ico">
+
+  <link href="./parsons.css" rel="stylesheet" />
+  <link href="./lib/prettify.css" rel="stylesheet" />
+  <link href="./personalStyle.css" rel="stylesheet" />
+  <script src="./lib/prettify.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!--
+    To use these fonts in style:
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Mono', monospace;
+  -->
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/fc3f8d6bba.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="master-container">
+    <div class="container">
+      <div class="navbar">
+        <div id="logo">
+          <!-- Logo -->
+        </div>
+
+        <div id="progress-bar">
+          <span class="current-level">Iniciante</span>
+          <div class="progressbar-background">
+            <div class="progressbar-progress">
+              <span class="progressbar-progress-text">50%</span>
+            </div>
+          </div>
+          <span class="next-level">Intermediário</span>
+        </div>
+
+        <div id="menu">
+          <a href="#">
+            <i class="menu-icon fa-solid fa-bars fa-2xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="enunciado-area">
+        <div class="block-margin">
+          <h1>Enunciado:</h1>
+          <span id="enunciadoText">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          </span>
+        </div>
+      </div>
+
+      <div class="code-area">
+        <div class="buttons-notch">
+          <div class="buttons">
+            <a href="#" class="button" id="btnSubmit">Run</a>
+            <a href="#" class="button" id="btnReset">Resetar</a>
+            <a href="#" class="button" id="btnChangeExercise">Trocar Exercício</a>
+          </div>
+        </div>
+        <div class="code-code-area">
+          <div id="sortableTrash" class="sortable-code"></div>
+          <div id="sortable" class="sortable-code"></div>
+        </div>
+      </div>
+
+      <div class="feedback-area">
+        <div class="block-margin">
+          <div class="feedback-title-area">
+            <h1 id="feedBackTitle">Feedback:</h1>
+
+          </div>
+
+          <div class="feedback-feedback-area">
+            <span id="feedbackText">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</body>
+
+<script src="./lib/jquery.min.js"></script>
+<script src="./lib/jquery-ui.min.js"></script>
+<script src="./lib/jquery.ui.touch-punch.min.js"></script>
+<script src="./lib/underscore-min.js"></script>
+<script src="./lib/lis.js"></script>
+<script src="./parsons.js"></script>
+<script>
+  var initial = 'def continua(valor_booleano):\n' +
+    '    if (valor_booleano==True):\n' +
+    '        return "Sim, quero continuar"\n' +
+    '    else:\n' +
+    '        return "Não, por enquanto estou bem aqui"\n'
+
+
+
+  function displayErrors(fb) {
+    if (fb.errors.length > 0) {
+      alert(fb.errors[0]);
+    }
+  }
+
+
+  $(document).ready(function () {
+    var parson = new ParsonsWidget({
+      'sortableId': 'sortable',
+      'trashId': 'sortableTrash',
+      'max_wrong_lines': 1,
+      'feedback_cb': displayErrors,
+      'lang': 'ptbr'
+    });
+    parson.init(initial);
+    parson.shuffleLines();
+
+    // Muda o exercício (GET de um novo exercício)
+    $("#btnChangeExercise").click(function (event) {
+      event.preventDefault();
+    });
+
+    // Reembaralha as linhas
+    $("#btnReset").click(function (event) {
+      event.preventDefault();
+      parson.shuffleLines();
+    });
+
+    // Faz o submit do exercício -> 
+    // 1. Retorna o feedback desse exercício
+    // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
+    // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
+    // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
+    //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
+    //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
+    $("#btnSubmit").click(function (event) {
+      event.preventDefault();
+      var fb = parson.getFeedback();
+      if (fb.success) {
+        //$("#correctConfirmation").show().css("display", "inline-block");
+        //$("#nextLevel").show();
+      }
+    });
+  });
+
+</script>

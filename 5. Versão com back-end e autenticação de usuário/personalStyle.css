@@ -17,6 +17,16 @@ a {
   text-decoration: none;
 }
 
+code {
+  background-color: #676c88;
+  border-radius: 2px;
+}
+
+pre {
+  border: 1px solid #676c88;
+}
+
+
 /* MASTER CONTAINER */
 
 #master-container {
