@@ -23,8 +23,8 @@ body {
   margin-right: 10px;
 }
 
-.login-image img { 
-  width: 90%;
+.login-image img {
+  max-height: 80%;
   border-radius: 50px;
   border: 1px solid #676c88;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
