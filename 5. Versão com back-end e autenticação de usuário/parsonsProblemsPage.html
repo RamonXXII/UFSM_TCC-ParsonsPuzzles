@@ -34,57 +34,78 @@
   <script src="https://accounts.google.com/gsi/client" async></script>
   <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
   <script>
-    var initial = 'def continua(valor_booleano):\n' +
-      '    if (valor_booleano==True):\n' +
-      '        return "Sim, quero continuar"\n' +
-      '    else:\n' +
-      '        return "Não, por enquanto estou bem aqui"\n'
-
-
-
-    function displayErrors(fb) {
+    function displayFeedback(fb) {
+      console.log(fb)
       if (fb.errors.length > 0) {
-        alert(fb.errors[0]);
+        $("#feedbackText").html(fb.errors[0])
+      } else {
+        $("#feedbackText").html("Parabéns, você acertou!");
+        // Faz o submit do exercício -> 
+        // 1. Retorna o feedback desse exercício
+        // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
+        // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
+        // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
+        //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
+        //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
       }
     }
 
+    function isNullString(value) {
+      if (value == "null") {
+        return;
+      } else {
+        return value;
+      }
+    }
 
     $(document).ready(function () {
-      var parson = new ParsonsWidget({
-        'sortableId': 'sortable',
-        'trashId': 'sortableTrash',
-        'max_wrong_lines': 1,
-        'feedback_cb': displayErrors,
-        'lang': 'ptbr'
-      });
-      parson.init(initial);
-      parson.shuffleLines();
-
-      // Muda o exercício (GET de um novo exercício)
-      $("#btnChangeExercise").click(function (event) {
-        event.preventDefault();
-      });
-
-      // Reembaralha as linhas
-      $("#btnReset").click(function (event) {
-        event.preventDefault();
-        parson.shuffleLines();
-      });
-
-      // Faz o submit do exercício -> 
-      // 1. Retorna o feedback desse exercício
-      // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
-      // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
-      // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
-      //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
-      //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
-      $("#btnSubmit").click(function (event) {
-        event.preventDefault();
-        var fb = parson.getFeedback();
-        if (fb.success) {
-          //$("#correctConfirmation").show().css("display", "inline-block");
-          //$("#nextLevel").show();
+      fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio&dificuldade=iniciante",
+        {
+          method: "GET",
         }
+      ).then(response => {
+        return response.json();
+      }).then(res => {
+        //////////////////////////////
+        const randEx = res.randExercise;
+        console.log(randEx)
+
+        // Set enunciado
+        $("#enunciadoText").append(randEx.enunciado);
+
+        var parson = new ParsonsWidget({
+          'sortableId': 'sortable',
+          'trashId': 'sortableTrash',
+          'max_wrong_lines': randEx.max_wrong_lines,
+          'feedback_cb': displayFeedback,
+          'lang': 'ptbr',
+          'initcode': isNullString(randEx.initcode),
+          'toggleTypeHandlers': isNullString(randEx.toggleTypeHandlers),
+          'unittests': isNullString(randEx.unittests),
+          'vartests': isNullString(randEx.vartests)
+        });
+        parson.init(randEx.exercicio);
+        parson.shuffleLines();
+
+        console.log(parson)
+
+        // Muda o exercício (GET de um novo exercício)
+        $("#btnChangeExercise").click(function (event) {
+          event.preventDefault();
+        });
+
+        // Reembaralha as linhas
+        $("#btnReset").click(function (event) {
+          event.preventDefault();
+          parson.shuffleLines();
+        });
+
+
+        $("#btnSubmit").click(function (event) {
+          event.preventDefault();
+          parson.getFeedback();
+        });
+        //////////////////////////////
       });
     });
   </script>
@@ -122,7 +143,6 @@
         <div class="block-margin">
           <h1>Enunciado:</h1>
           <span id="enunciadoText">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           </span>
         </div>
       </div>
@@ -150,8 +170,6 @@
 
           <div class="feedback-feedback-area">
             <span id="feedbackText">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
             </span>
           </div>
         </div>
