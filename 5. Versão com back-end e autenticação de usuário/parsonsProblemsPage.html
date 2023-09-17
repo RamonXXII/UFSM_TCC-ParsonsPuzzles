@@ -8,7 +8,7 @@
   <link href="./parsons.css" rel="stylesheet" />
   <link href="./lib/prettify.css" rel="stylesheet" />
   <link href="./personalStyle.css" rel="stylesheet" />
-  <script src="./lib/prettify.js"></script>
+
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,76 @@
 
   <!-- Icons -->
   <script src="https://kit.fontawesome.com/fc3f8d6bba.js" crossorigin="anonymous"></script>
+
+  <!-- Scripts -->
+  <script src="./lib/jquery.min.js"></script>
+  <script src="./lib/jquery-ui.min.js"></script>
+  <script src="./lib/jquery.ui.touch-punch.min.js"></script>
+  <script src="./lib/underscore-min.js"></script>
+  <script src="./lib/lis.js"></script>
+  <script src="./parsons.js"></script>
+  <script src="./lib/prettify.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+  <script>
+    var initial = 'def continua(valor_booleano):\n' +
+      '    if (valor_booleano==True):\n' +
+      '        return "Sim, quero continuar"\n' +
+      '    else:\n' +
+      '        return "Não, por enquanto estou bem aqui"\n'
+
+
+
+    function displayErrors(fb) {
+      if (fb.errors.length > 0) {
+        alert(fb.errors[0]);
+      }
+    }
+
+
+    $(document).ready(function () {
+      var parson = new ParsonsWidget({
+        'sortableId': 'sortable',
+        'trashId': 'sortableTrash',
+        'max_wrong_lines': 1,
+        'feedback_cb': displayErrors,
+        'lang': 'ptbr'
+      });
+      parson.init(initial);
+      parson.shuffleLines();
+
+      // Muda o exercício (GET de um novo exercício)
+      $("#btnChangeExercise").click(function (event) {
+        event.preventDefault();
+      });
+
+      // Reembaralha as linhas
+      $("#btnReset").click(function (event) {
+        event.preventDefault();
+        parson.shuffleLines();
+      });
+
+      // Faz o submit do exercício -> 
+      // 1. Retorna o feedback desse exercício
+      // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
+      // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
+      // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
+      //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
+      //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
+      $("#btnSubmit").click(function (event) {
+        event.preventDefault();
+        var fb = parson.getFeedback();
+        if (fb.success) {
+          //$("#correctConfirmation").show().css("display", "inline-block");
+          //$("#nextLevel").show();
+        }
+      });
+    });
+  </script>
 </head>
+
+
+<!-- Body -->
 
 <body>
   <div id="master-container">
@@ -93,66 +162,3 @@
 
   </div>
 </body>
-
-<script src="./lib/jquery.min.js"></script>
-<script src="./lib/jquery-ui.min.js"></script>
-<script src="./lib/jquery.ui.touch-punch.min.js"></script>
-<script src="./lib/underscore-min.js"></script>
-<script src="./lib/lis.js"></script>
-<script src="./parsons.js"></script>
-<script>
-  var initial = 'def continua(valor_booleano):\n' +
-    '    if (valor_booleano==True):\n' +
-    '        return "Sim, quero continuar"\n' +
-    '    else:\n' +
-    '        return "Não, por enquanto estou bem aqui"\n'
-
-
-
-  function displayErrors(fb) {
-    if (fb.errors.length > 0) {
-      alert(fb.errors[0]);
-    }
-  }
-
-
-  $(document).ready(function () {
-    var parson = new ParsonsWidget({
-      'sortableId': 'sortable',
-      'trashId': 'sortableTrash',
-      'max_wrong_lines': 1,
-      'feedback_cb': displayErrors,
-      'lang': 'ptbr'
-    });
-    parson.init(initial);
-    parson.shuffleLines();
-
-    // Muda o exercício (GET de um novo exercício)
-    $("#btnChangeExercise").click(function (event) {
-      event.preventDefault();
-    });
-
-    // Reembaralha as linhas
-    $("#btnReset").click(function (event) {
-      event.preventDefault();
-      parson.shuffleLines();
-    });
-
-    // Faz o submit do exercício -> 
-    // 1. Retorna o feedback desse exercício
-    // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
-    // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
-    // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
-    //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
-    //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
-    $("#btnSubmit").click(function (event) {
-      event.preventDefault();
-      var fb = parson.getFeedback();
-      if (fb.success) {
-        //$("#correctConfirmation").show().css("display", "inline-block");
-        //$("#nextLevel").show();
-      }
-    });
-  });
-
-</script>

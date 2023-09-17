@@ -22,6 +22,74 @@
 
   <!-- Icons -->
   <script src="https://kit.fontawesome.com/fc3f8d6bba.js" crossorigin="anonymous"></script>
+
+  <!-- Scripts -->
+  <script src="./lib/jquery.min.js"></script>
+  <script src="./lib/jquery-ui.min.js"></script>
+  <script src="./lib/jquery.ui.touch-punch.min.js"></script>
+  <script src="./lib/underscore-min.js"></script>
+  <script src="./lib/lis.js"></script>
+  <script src="./parsons.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+  <script>
+    function handleCredentialResponse(response) {
+      //console.log("Encoded JWT ID token: " + response.credential);
+      const googleData = jwt_decode(response.credential)
+      console.log(googleData)
+
+      const postData = {
+        "actionRequest": "postNovoUsuario",
+        "payload": {
+          "email_verified": googleData.email_verified,
+          "email": googleData.email,
+          "sub": googleData.sub,
+          "name": googleData.name,
+          "pic": googleData.picture
+        }
+      }
+
+      fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec",
+        {
+          method: "POST", // GET, POST
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "no-cors",
+          body: JSON.stringify(postData), // body data type must match "Content-Type" header
+        }
+      ).then(response => {
+        console.log(response)
+        if (response.status == "ok") {
+          document.cookie = "email=" + response.data.email + ";sub=" + response.data.sub + "; max-age=86400; path=/;";
+          window.location.href = response.url;
+        }
+      })
+
+
+    }
+
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "1030847469866-kllf62lh6mu02mvasd79erm5jo6b9t69.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("buttonDiv"),
+        {
+          theme: "filled_black",
+          size: "large",
+          type: "standard",
+          shape: "pill",
+          text: "continue_with",
+          logo_alignment: "left"
+        }  // customization attributes
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+  </script>
 </head>
 
 <body>
@@ -30,20 +98,8 @@
       <img src="./assets/teste-de-imagem.png" alt="Código em python estilizado e rotacionado.">
     </div>
     <div class="login-form">
-      <div id="login-with-google">
-        <p>login with google</p>
-      </div>
-      <p>aaaaaaaaa</p>
+      <div id="buttonDiv"></div>
+      <p></p>
     </div>
   </div>
 </body>
-
-<script src="./lib/jquery.min.js"></script>
-<script src="./lib/jquery-ui.min.js"></script>
-<script src="./lib/jquery.ui.touch-punch.min.js"></script>
-<script src="./lib/underscore-min.js"></script>
-<script src="./lib/lis.js"></script>
-<script src="./parsons.js"></script>
-<script>
-
-</script>
