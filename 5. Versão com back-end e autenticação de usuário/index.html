@@ -34,7 +34,6 @@
   <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
   <script>
     function handleCredentialResponse(response) {
-      //console.log("Encoded JWT ID token: " + response.credential);
       const googleData = jwt_decode(response.credential)
       console.log(googleData)
 
@@ -63,7 +62,17 @@
       }).then(res => {
         console.log(res);
         if (res.status == "success") {
-          document.cookie = "email=" + res.data.email + ";sub=" + res.data.sub + "; max-age=86400; path=/;";
+          const auth = {
+            "email_verified": res.data.email_verified,
+            "email": res.data.email,
+            "sub": res.data.sub
+          }
+          const userData = {
+            "email": res.data.email,
+            "name": res.data.name,
+            "pic": res.data.pic
+          }
+          document.cookie = "auth=" + auth + "; userData=" + userData + " max-age=86400; path=/;";
           window.location.href = res.url;
         }
       });

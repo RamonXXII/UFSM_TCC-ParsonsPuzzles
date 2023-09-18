@@ -66,12 +66,12 @@ li.correctIndent {
 }
 
 li.incorrectPosition, .testcase.fail, .testcase.error {
-    background-color: #FFBABA;
+    background-color: #ce4848;
     border:1px solid red;
 }
 
 li.correctPosition, .testcase.pass {
-    background-color: #DFF2BF;
+    background-color: #739638;
     border:1px solid green;
 }
 
