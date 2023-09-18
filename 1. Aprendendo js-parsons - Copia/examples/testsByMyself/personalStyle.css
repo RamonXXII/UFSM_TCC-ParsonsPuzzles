@@ -1,0 +1,108 @@
+.container {
+    background: rgba(162,209,242,1);
+    background: -moz-linear-gradient(top, rgba(162,209,242,1) 0%, rgba(195,129,228,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(162,209,242,1) 0%, rgba(195,129,228,1) 100%);
+    background: -o-linear-gradient(top, rgba(162,209,242,1) 0%, rgba(195,129,228,1) 100%);
+    background: -ms-linear-gradient(top, rgba(162,209,242,1) 0%, rgba(195,129,228,1) 100%);
+    background: linear-gradient(to bottom, rgba(162,209,242,1) 0%, rgba(195,129,228,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2d1f2', endColorstr='#c381e4', GradientType=0 );
+    
+    margin-top: 2rem;
+    border-radius: 20px;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+.pageTitle {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 40px;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+a {
+    color:rgb(24, 24, 24);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-family: 'Roboto Slab', serif;
+    transition: ease 0.2s;
+}
+
+a:hover {
+    padding: 15px 25px;
+    text-decoration: none;
+}
+
+.correctConfirmationArea {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#correctConfirmation {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    color: rgb(20, 37, 15);
+    width: fit-content;
+    padding: 10px 20px;
+    border:  5px solid;
+    border-radius: 15px;
+    border-color: greenyellow;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+#btnDica {
+    background-color: orange;
+    color:rgb(24, 24, 24);
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+#newInstanceLink {
+    background-color:aqua;
+    color:rgb(24, 24, 24);
+    text-decoration: none;
+}
+
+#feedbackLink {
+    background-color: aqua;
+    color:rgb(24, 24, 24);
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+#nextLevel {
+    background-color: greenyellow;
+    color:rgb(24, 24, 24);
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+#enunciado {
+    margin-left: 3rem;
+    text-align: left;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+}
+
+#dica {
+    margin-top:4rem;
+    margin-left:1rem;
+    text-align: left;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+}

@@ -106,19 +106,12 @@
 <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
 <script>
   function displayFeedback(fb) {
-    console.log(Array.isArray(fb))
     if (Array.isArray(fb)) {
       if (fb.length > 0) {
         $("#feedbackText").html(fb[0])
       } else {
         $("#feedbackText").html("Parabéns, você acertou!");
-        // Faz o submit do exercício -> 
-        // 1. Retorna o feedback desse exercício
-        // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
-        // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
-        // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
-        //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
-        //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
+
       }
     } else if (fb.hasOwnProperty("feedback")) {
       if (fb.success) {
@@ -127,6 +120,16 @@
         $("#feedbackText").html(fb.feedback)
       }
     }
+  }
+
+  function saveProgress() {
+    // Faz o submit do exercício -> 
+    // 1. Retorna o feedback desse exercício
+    // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
+    // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
+    // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
+    //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
+    //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
   }
 
 
@@ -166,8 +169,6 @@
       parson.init(randEx.exercicio);
       parson.shuffleLines();
 
-      console.log(parson)
-
       // Muda o exercício (GET de um novo exercício)
       $("#btnChangeExercise").click(function (event) {
         event.preventDefault();
@@ -182,11 +183,8 @@
 
       $("#btnSubmit").click(function (event) {
         event.preventDefault();
-
         var fb = parson.getFeedback();
-        console.log(fb)
         displayFeedback(fb);
-
       });
       //////////////////////////////
     });
