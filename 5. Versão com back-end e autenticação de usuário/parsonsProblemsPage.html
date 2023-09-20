@@ -121,6 +121,10 @@
       } else {
         $("#feedbackText").html(fb.feedback)
       }
+    } else {
+      if (fb.success) {
+        $("#feedbackText").html("Parabéns, você acertou!");
+      }
     }
   }
 
