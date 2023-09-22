@@ -63,16 +63,21 @@
         console.log(res);
         if (res.status == "success") {
           const auth = {
-            "email_verified": res.data.email_verified,
+            "email_verified": googleData.email_verified,
             "email": res.data.email,
             "sub": res.data.sub
           }
           const userData = {
             "email": res.data.email,
             "name": res.data.name,
-            "pic": res.data.pic
+            "pic": res.data.pic,
+            "userLevel": res.data.userLevel,
+            "userNextLevel": res.data.userNextLevel,
+            "levelProgress": res.data.levelProgress
           }
-          document.cookie = "auth=" + auth + "; userData=" + userData + " max-age=86400; path=/;";
+          document.cookie = "auth=" + JSON.stringify(auth) + "; path=/";
+          document.cookie =  "userData=" + JSON.stringify(userData) + "; path=/";
+
           window.location.href = res.url;
         }
       });

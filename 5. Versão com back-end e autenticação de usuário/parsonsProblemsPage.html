@@ -107,6 +107,18 @@
 <script src="https://accounts.google.com/gsi/client" async></script>
 <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
 <script>
+  function getCookie(cName) {
+    const name = cName + "=";
+    const cDecoded = decodeURIComponent(document.cookie); //to be careful
+    const cArr = cDecoded.split('; ');
+    let res;
+    cArr.forEach(val => {
+      if (val.indexOf(name) === 0) res = val.substring(name.length);
+    })
+    res = JSON.parse(res)
+    return res
+  }
+
   function displayFeedback(fb) {
     if (Array.isArray(fb)) {
       if (fb.length > 0) {
@@ -148,6 +160,9 @@
   }
 
   $(document).ready(function () {
+    const userData = getCookie("userData")
+    const auth = getCookie("auth")
+
     fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio&dificuldade=intermediario",
       {
         method: "GET",

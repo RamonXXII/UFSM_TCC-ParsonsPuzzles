@@ -37,7 +37,7 @@ pre {
   display: grid;
   grid-template-columns: 0.6fr 1fr 1fr;
   /*grid-template-rows: 60px minmax(2.1fr,fit-content) minmax(1fr,fit-content);*/
-  grid-template-rows: 0.3fr 2.1fr 1fr;
+  grid-template-rows: fit-content(0.3fr) fit-content(2.1fr) fit-content(1fr);
   gap: 0px 0px;
   width: 100vw;
   height: 100vh;
