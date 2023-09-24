@@ -3,6 +3,7 @@
 body {
   margin: 0px;
   overflow-x:hidden;
+  background-color: #1a1c23;
 }
 
 h1 {
@@ -36,8 +37,13 @@ pre {
 .container {  
   display: grid;
   grid-template-columns: 0.6fr 1fr 1fr;
-  /*grid-template-rows: 60px minmax(2.1fr,fit-content) minmax(1fr,fit-content);*/
-  grid-template-rows: fit-content(0.3fr) fit-content(2.1fr) fit-content(1fr);
+  /*
+
+  grid-template-rows: 60px minmax(2.1fr,fit-content) minmax(1fr,fit-content);
+  grid-template-rows: 0.1fr 40rem min-content(20rem);
+  
+  */
+  grid-template-rows: 0.1fr 2.1fr 1fr;
   gap: 0px 0px;
   width: 100vw;
   height: 100vh;
@@ -57,7 +63,10 @@ pre {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 60px;
+}
+
+#progress-bar {
+  padding: 30px 0px 30px 0px;
 }
 
 .progressbar-background {
@@ -158,6 +167,7 @@ pre {
   font-family: 'Space Mono', monospace;
   font-weight: 400;
   color: #f0f0f0;
+  max-height: fit-content;
 }
 
 #enunciadoText {

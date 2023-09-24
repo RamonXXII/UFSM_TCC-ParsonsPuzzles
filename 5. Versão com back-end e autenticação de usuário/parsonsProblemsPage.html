@@ -159,11 +159,29 @@
     }
   }
 
+
+  function getRandExURL(userId = null, dificuldade = null) {
+    var url = "https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio";
+
+    // Add dificuldade
+    if (userId == null) {
+      // NÃO FUNCIONA AINDA SEM ESTAR LOGADO
+      url = url + "&dificuldade=" + dificuldade;
+    } else {
+      // Usuário está logado
+      url = url + "&dificuldade=userDefault";
+      url = url + "&userId=" + userId;
+    }
+
+    return url;
+  }
+
+
   $(document).ready(function () {
     const userData = getCookie("userData")
     const auth = getCookie("auth")
 
-    fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio&dificuldade=intermediario",
+    fetch(getRandExURL(userData.id),
       {
         method: "GET",
       }
@@ -172,6 +190,7 @@
     }).then(res => {
       //////////////////////////////
       const randEx = res.randExercise;
+      const startDatehour = res.startDatehour;
       console.log(randEx)
 
       // Set enunciado
