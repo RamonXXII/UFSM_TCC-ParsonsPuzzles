@@ -1,0 +1,3 @@
+Caso queira testar o valor de retorno e ver se uma função está executando da forma certa: usar unitTest (ver toggle-example.html)
+
+Caso queira testar o valor de cada variável no final do código, usar vartests (ver toggle-variable-grader-example.html)
