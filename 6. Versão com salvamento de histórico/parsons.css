@@ -71,7 +71,7 @@ li.incorrectPosition, .testcase.fail, .testcase.error {
 }
 
 li.correctPosition, .testcase.pass {
-    background-color: #739638;
+    background-color: #abc381;
     border:1px solid green;
 }
 
