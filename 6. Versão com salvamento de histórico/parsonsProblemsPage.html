@@ -63,9 +63,9 @@
       <div class="code-area">
         <div class="buttons-notch">
           <div class="buttons">
-            <a href="#" class="button" id="btnSubmit">Run</a>
-            <a href="#" class="button" id="btnReset">Resetar</a>
-            <a href="#" class="button" id="btnChangeExercise">Trocar Exercício</a>
+            <button class="button" id="btnSubmit">Run</button>
+            <button href="#" class="button" id="btnReset">Resetar</button>
+            <button href="#" class="button" id="btnChangeExercise">Trocar Exercício</button>
           </div>
         </div>
         <div class="code-code-area">
@@ -106,67 +106,98 @@
 <script src="../lib/skulpt-stdlib.js"></script>
 <script src="https://accounts.google.com/gsi/client" async></script>
 <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+<script src="./utils.js"></script>
 <script>
   const userData = getCookie("userData");
   const auth = getCookie("auth");
   var randEx;
+  var tentativasCont;
+  var tentativas = [];
   var startDate;
   var submitDate;
   var parson;
 
-
-
-  function getCookie(cName) {
-    const name = cName + "=";
-    const cDecoded = decodeURIComponent(document.cookie); //to be careful
-    const cArr = cDecoded.split('; ');
-    let res;
-    cArr.forEach(val => {
-      if (val.indexOf(name) === 0) res = val.substring(name.length);
-    });
-    res = JSON.parse(res);
-    return res;
-  }
-
+  
   function displayFeedback(fb) {
+    function exercicioCorreto() {
+      $("#feedbackText").html("Parabéns, você acertou!");
+      saveProgress();
+    }
+  
+    function atualizaTentativas() {
+      tentativas.push({
+        tentativa: tentativasCont,
+        horario: new Date()
+      });
+      
+      tentativasCont++;
+    }
+    
     if (Array.isArray(fb)) {
       if (fb.length > 0) {
         $("#feedbackText").html(fb[0]);
+        atualizaTentativas();
       } else {
-        $("#feedbackText").html("Parabéns, você acertou!");
-
+        exercicioCorreto();
       }
     } else if (fb.hasOwnProperty("feedback")) {
       if (fb.success) {
-        $("#feedbackText").html("Parabéns, você acertou!");
+        exercicioCorreto();
       } else {
         $("#feedbackText").html(fb.feedback);
+        atualizaTentativas();
       }
     } else {
       if (fb.success) {
-        $("#feedbackText").html("Parabéns, você acertou!");
-        saveProgress();
+        exercicioCorreto();
       }
     }
   }
 
   function saveProgress() {
     // Faz o submit do exercício -> 
-    // 1. Retorna o feedback desse exercício
-    // 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
+    // ----- 1. Retorna o feedback desse exercício
+    // -> 2. Caso esteja logado: Faz PUSH do banco de dados que o exercício foi realizado (PUSH dos dados no histórico)
     // 3. Caso esteja logado: Atualiza a barra de progresso com os dados do banco (GET do nível atual do usuário)
     // 4. Habilita o botão para o dar um get no novo exercício (GET do exercício)
     //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
     //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
-  }
+    $("#btnSubmit").prop('disabled', true);
+    $("#btnReset").prop('disabled', true);
 
+    submitDate = new Date();
 
-  function isNullString(value) {
-    if (value == "null") {
-      return;
-    } else {
-      return value;
+    var postData = {
+      "actionRequest": "postHistorico",
+      "payload": {
+        "userId": userData.id,
+        "startDate": startDate,
+        "submitDate": submitDate,
+        "state": "completo",
+        "exerciseId": randEx.id,
+        "triesCount": JSON.stringify(tentativas),
+      },
+      "auth": auth
     }
+
+    console.log(postData);
+
+
+    fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        redirect: "follow",
+        body: JSON.stringify(postData), // body data type must match "Content-Type" header
+      }
+    ).then(response => {
+      return response.json();
+    }).then(res => {
+      console.log(res);
+    });
+
   }
 
   function getExercicioAleatorio(userData) {
@@ -182,7 +213,8 @@
   // Seta um novo exercício no site e pega a hora atual
   function setNovoExercicio(res) {
     randEx = res.randExercise;
-    startDate = res.startDate;
+    startDate = new Date();
+    tentativasCont = 1;
     console.log(randEx);
 
     // Set enunciado
@@ -202,23 +234,9 @@
     });
     parson.init(randEx.exercicio);
     parson.shuffleLines();
-  }
 
-
-  function getRandExURL(userId = null, dificuldade = null) {
-    var url = "https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio";
-
-    // Add dificuldade
-    if (userId == null) {
-      // NÃO FUNCIONA AINDA SEM ESTAR LOGADO
-      url = url + "&dificuldade=" + dificuldade;
-    } else {
-      // Usuário está logado
-      url = url + "&dificuldade=userDefault";
-      url = url + "&userId=" + userId;
-    }
-    
-    return url;
+    $("#btnSubmit").prop('disabled', false);
+    $("#btnReset").prop('disabled', false);
   }
 
 

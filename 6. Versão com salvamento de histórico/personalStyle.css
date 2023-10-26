@@ -18,6 +18,14 @@ a {
   text-decoration: none;
 }
 
+button:hover {
+  text-decoration: none;
+}
+
+button {
+  text-decoration: none;
+}
+
 code {
   background-color: #676c88;
   border-radius: 2px;
@@ -207,8 +215,10 @@ pre {
   align-items: center;
 }
 
-.buttons a {
+.buttons button {
   font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  border: none;
   font-weight: 600;
   font-size: large;
   color:#1b0722;
@@ -219,12 +229,13 @@ pre {
   transition: ease 0.2s;
 }
 
-.buttons a:hover {
+.buttons button:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 #btnReset {
   color: #dbdbdb;
+  background-color: #414658;
   box-shadow: inset 0px 0px 0px 2px #929292;
 }
 
