@@ -107,6 +107,15 @@
 <script src="https://accounts.google.com/gsi/client" async></script>
 <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
 <script>
+  const userData = getCookie("userData");
+  const auth = getCookie("auth");
+  var randEx;
+  var startDate;
+  var submitDate;
+  var parson;
+
+
+
   function getCookie(cName) {
     const name = cName + "=";
     const cDecoded = decodeURIComponent(document.cookie); //to be careful
@@ -114,15 +123,15 @@
     let res;
     cArr.forEach(val => {
       if (val.indexOf(name) === 0) res = val.substring(name.length);
-    })
-    res = JSON.parse(res)
-    return res
+    });
+    res = JSON.parse(res);
+    return res;
   }
 
   function displayFeedback(fb) {
     if (Array.isArray(fb)) {
       if (fb.length > 0) {
-        $("#feedbackText").html(fb[0])
+        $("#feedbackText").html(fb[0]);
       } else {
         $("#feedbackText").html("Parabéns, você acertou!");
 
@@ -131,11 +140,12 @@
       if (fb.success) {
         $("#feedbackText").html("Parabéns, você acertou!");
       } else {
-        $("#feedbackText").html(fb.feedback)
+        $("#feedbackText").html(fb.feedback);
       }
     } else {
       if (fb.success) {
         $("#feedbackText").html("Parabéns, você acertou!");
+        saveProgress();
       }
     }
   }
@@ -159,6 +169,41 @@
     }
   }
 
+  function getExercicioAleatorio(userData) {
+    return fetch(getRandExURL(userData.id),
+      {
+        method: "GET",
+      }
+    ).then(response => {
+      return response.json();
+    });
+  }
+
+  // Seta um novo exercício no site e pega a hora atual
+  function setNovoExercicio(res) {
+    randEx = res.randExercise;
+    startDate = res.startDate;
+    console.log(randEx);
+
+    // Set enunciado
+    $(".added").remove();
+    $("#feedbackText").html(" ");
+    $("#enunciadoText").append('<div class="added">' + randEx.enunciado + '</div>');
+
+    parson = new ParsonsWidget({
+      'sortableId': 'sortable',
+      'trashId': 'sortableTrash',
+      'max_wrong_lines': randEx.max_wrong_lines,
+      'lang': 'ptbr',
+      'initcode': isNullString(randEx.initcode),
+      'toggleTypeHandlers': isNullString(randEx.toggleTypeHandlers),
+      'unittests': isNullString(randEx.unittests),
+      'vartests': isNullString(randEx.vartests)
+    });
+    parson.init(randEx.exercicio);
+    parson.shuffleLines();
+  }
+
 
   function getRandExURL(userId = null, dificuldade = null) {
     var url = "https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio";
@@ -178,40 +223,16 @@
 
 
   $(document).ready(function () {
-    const userData = getCookie("userData")
-    const auth = getCookie("auth")
-
-    fetch(getRandExURL(userData.id),
-      {
-        method: "GET",
-      }
-    ).then(response => {
-      return response.json();
-    }).then(res => {
+    getExercicioAleatorio(userData).then(res => {
       //////////////////////////////
-      const randEx = res.randExercise;
-      const startDate = res.startDate;
-      console.log(randEx)
-
-      // Set enunciado
-      $("#enunciadoText").append(randEx.enunciado);
-
-      var parson = new ParsonsWidget({
-        'sortableId': 'sortable',
-        'trashId': 'sortableTrash',
-        'max_wrong_lines': randEx.max_wrong_lines,
-        'lang': 'ptbr',
-        'initcode': isNullString(randEx.initcode),
-        'toggleTypeHandlers': isNullString(randEx.toggleTypeHandlers),
-        'unittests': isNullString(randEx.unittests),
-        'vartests': isNullString(randEx.vartests)
-      });
-      parson.init(randEx.exercicio);
-      parson.shuffleLines();
+      setNovoExercicio(res);
 
       // Muda o exercício (GET de um novo exercício)
       $("#btnChangeExercise").click(function (event) {
         event.preventDefault();
+        getExercicioAleatorio(userData).then(response => {
+          setNovoExercicio(response);
+        })
       });
 
       // Reembaralha as linhas
