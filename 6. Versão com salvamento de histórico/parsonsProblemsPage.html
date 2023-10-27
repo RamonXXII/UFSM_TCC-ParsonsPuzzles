@@ -105,7 +105,8 @@
 <script src="../lib/skulpt.js"></script>
 <script src="../lib/skulpt-stdlib.js"></script>
 <script src="https://accounts.google.com/gsi/client" async></script>
-<script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+<script src="https://unpkg.com/jwt-decode/build/cjs/index.js"></script>
+<!--<script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>-->
 <script src="./utils.js"></script>
 <script>
   const userData = getCookie("userData");
@@ -196,6 +197,7 @@
       return response.json();
     }).then(res => {
       console.log(res);
+      setUserLevel(res.data.userLevelInfo);
     });
 
   }
@@ -215,12 +217,14 @@
     randEx = res.randExercise;
     startDate = new Date();
     tentativasCont = 1;
-    console.log(randEx);
+    console.log(res);
 
     // Set enunciado
     $(".added").remove();
     $("#feedbackText").html(" ");
     $("#enunciadoText").append('<div class="added">' + randEx.enunciado + '</div>');
+    // Set user level
+    setUserLevel(res.userLevelInfo);
 
     parson = new ParsonsWidget({
       'sortableId': 'sortable',

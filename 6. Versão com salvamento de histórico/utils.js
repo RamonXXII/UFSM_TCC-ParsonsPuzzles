@@ -34,3 +34,12 @@ function getCookie(cName) {
     res = JSON.parse(res);
     return res;
 }
+
+function setUserLevel(userLevelInfo) {
+    $(".current-level").html(userLevelInfo.currentLevel);
+    $(".progressbar-progress-text").html(userLevelInfo.levelProgress);
+    $(".next-level").html(userLevelInfo.nextLevel);
+
+    const levelPercent = userLevelInfo.levelProgress*10 + "%";
+    $(".progressbar-progress").css("width",levelPercent);
+  }
