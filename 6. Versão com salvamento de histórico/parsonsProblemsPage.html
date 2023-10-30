@@ -8,6 +8,7 @@
   <link href="./parsons.css" rel="stylesheet" />
   <link href="./lib/prettify.css" rel="stylesheet" />
   <link href="./personalStyle.css" rel="stylesheet" />
+  <link href="./cssAnimations.css" rel="stylesheet" />
 
 
   <!-- Google Fonts -->
@@ -39,7 +40,7 @@
           <span class="current-level">Iniciante</span>
           <div class="progressbar-background">
             <div class="progressbar-progress">
-              <span class="progressbar-progress-text">50%</span>
+              <span class="progressbar-progress-text">0</span>
             </div>
           </div>
           <span class="next-level">Intermediário</span>
@@ -64,8 +65,13 @@
         <div class="buttons-notch">
           <div class="buttons">
             <button class="button" id="btnSubmit">Run</button>
-            <button href="#" class="button" id="btnReset">Resetar</button>
-            <button href="#" class="button" id="btnChangeExercise">Trocar Exercício</button>
+            <button class="button" id="btnNext" disabled="true" hidden>Continuar</button>
+            <div id="msg-salvando" style="display: none;">
+              <span class="loader"></span>
+              <span class="icon-text">Salvando...</span>
+            </div>
+            <button class="button" id="btnReset">Resetar</button>
+            <button class="button" id="btnChangeExercise">Trocar Exercício</button>
           </div>
         </div>
         <div class="code-code-area">
@@ -118,22 +124,22 @@
   var submitDate;
   var parson;
 
-  
+
   function displayFeedback(fb) {
     function exercicioCorreto() {
       $("#feedbackText").html("Parabéns, você acertou!");
       saveProgress();
     }
-  
+
     function atualizaTentativas() {
       tentativas.push({
         tentativa: tentativasCont,
         horario: new Date()
       });
-      
+
       tentativasCont++;
     }
-    
+
     if (Array.isArray(fb)) {
       if (fb.length > 0) {
         $("#feedbackText").html(fb[0]);
@@ -164,7 +170,11 @@
     //    4.1 Caso esteja logado: O backend consulta o nível do usuário e já retorna o exercício na dificuldade adequada
     //    4.2 Caso não esteja logado: O front envia junto na request a dificuldade desejada
     $("#btnSubmit").prop('disabled', true);
+    $("#btnSubmit").hide();
+
     $("#btnReset").prop('disabled', true);
+
+    $("#msg-salvando").css('display', 'flex');
 
     submitDate = new Date();
 
@@ -181,8 +191,6 @@
       "auth": auth
     }
 
-    console.log(postData);
-
 
     fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec",
       {
@@ -196,8 +204,14 @@
     ).then(response => {
       return response.json();
     }).then(res => {
-      console.log(res);
       setUserLevel(res.data.userLevelInfo);
+
+      $("#msg-salvando").css('display', 'none');
+
+      $("#btnNext").prop('disabled', false);
+      $("#btnNext").css('background-color', '#50fa7b');
+      $("#btnNext").css('cursor', 'pointer');
+      $("#btnNext").show();
     });
 
   }
@@ -217,7 +231,6 @@
     randEx = res.randExercise;
     startDate = new Date();
     tentativasCont = 1;
-    console.log(res);
 
     // Set enunciado
     $(".added").remove();
@@ -225,6 +238,11 @@
     $("#enunciadoText").append('<div class="added">' + randEx.enunciado + '</div>');
     // Set user level
     setUserLevel(res.userLevelInfo);
+
+    $("#btnSubmit").show();
+
+    $("#btnNext").prop('disabled', true);
+    $("#btnNext").hide();
 
     parson = new ParsonsWidget({
       'sortableId': 'sortable',
@@ -254,7 +272,7 @@
         event.preventDefault();
         getExercicioAleatorio(userData).then(response => {
           setNovoExercicio(response);
-        })
+        });
       });
 
       // Reembaralha as linhas
@@ -268,6 +286,17 @@
         event.preventDefault();
         var fb = parson.getFeedback();
         displayFeedback(fb);
+      });
+
+
+      $("#btnNext").click(function (event) {
+        event.preventDefault();
+        $("#btnNext").prop('disabled', true);
+        $("#btnNext").css('background-color', '#a5a5a5');
+        $("#btnNext").css('cursor', 'wait');
+        getExercicioAleatorio(userData).then(response => {
+          setNovoExercicio(response);
+        });
       });
       //////////////////////////////
     });

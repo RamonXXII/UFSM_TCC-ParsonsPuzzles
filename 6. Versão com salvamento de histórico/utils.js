@@ -40,6 +40,9 @@ function setUserLevel(userLevelInfo) {
     $(".progressbar-progress-text").html(userLevelInfo.levelProgress);
     $(".next-level").html(userLevelInfo.nextLevel);
 
-    const levelPercent = userLevelInfo.levelProgress*10 + "%";
+    var levelPercent = userLevelInfo.levelProgress*10 + "%";
+    if(levelPercent === "0%") {
+        levelPercent = "3%";
+    }
     $(".progressbar-progress").css("width",levelPercent);
   }

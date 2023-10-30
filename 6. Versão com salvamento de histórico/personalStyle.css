@@ -88,7 +88,7 @@ pre {
   display: inline-block;
   border-radius: 60px;
   height:15px;
-  width:50%;
+  width:3%;
   background-color: #50fa7b;
 }
 
@@ -98,6 +98,7 @@ pre {
   font-family: 'Montserrat', sans-serif;
   font-size: smaller;
   font-weight: 600;
+  position: relative;
 }
 
 .current-level {
@@ -249,8 +250,25 @@ pre {
 }
 
 #btnSubmit {
+  background: #dbfa50;
+}
+
+#msg-salvando {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: large;
+  color:#fafafa;
+  margin: 0px 10px 0px 10px;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btnNext {
   background: #50fa7b;
 }
+
 
 /* TEXT MARGIN (ENUNCIADO E FEEDBACK) */
 
@@ -259,4 +277,10 @@ pre {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 5px;
+}
+
+/* ICON/ANIMATION TEXT */
+
+.icon-text {
+  margin-left: 15px;
 }
