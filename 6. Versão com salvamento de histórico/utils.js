@@ -6,7 +6,7 @@ function isNullString(value) {
     }
 }
 
-function getRandExURL(userId = null, dificuldade = "iniciante") {
+function getRandExURL(userId = null, dificuldade = 0) {
     var url = "https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio";
 
     // Add dificuldade
@@ -36,13 +36,27 @@ function getCookie(cName) {
 }
 
 function setUserLevel(userLevelInfo) {
-    $(".current-level").html(userLevelInfo.currentLevel);
-    $(".progressbar-progress-text").html(userLevelInfo.levelProgress);
-    $(".next-level").html(userLevelInfo.nextLevel);
+    const progressBarPercentRate = 10;
 
-    var levelPercent = userLevelInfo.levelProgress*10 + "%";
+    $(".current-level").html("Nivel " + userLevelInfo.currentLevel);
+    $(".progressbar-progress-text").html(userLevelInfo.levelProgress);
+    $(".next-level").html("Nivel " + userLevelInfo.nextLevel);
+
+    var levelPercent = userLevelInfo.levelProgress*progressBarPercentRate + "%";
     if(levelPercent === "0%") {
         levelPercent = "3%";
     }
     $(".progressbar-progress").css("width",levelPercent);
   }
+
+function btnEnable(btnName, color="#ffb86c") {
+    $(btnName).prop('disabled', false);
+    $(btnName).css('background-color', color);
+    $(btnName).css('cursor', 'pointer');
+}
+
+function btnDisable(btnName) {
+    $(btnName).prop('disabled', true);
+    $(btnName).css('background-color', '#a5a5a5');
+    $(btnName).css('cursor', 'wait');
+}

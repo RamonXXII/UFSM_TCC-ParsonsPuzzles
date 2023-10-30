@@ -209,7 +209,7 @@ pre {
   background-color: #313542;
   padding: 10px;
   border-bottom: 1px solid #676c88;
-  border-radius: 0px 0px 50px 50px;
+  border-radius: 0px 0px 30px 30px;
   margin: 0px 24% 0px 16%;
   justify-content: center;
 }
@@ -236,6 +236,10 @@ pre {
 
 .buttons button:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+#btnTestYourself {
+  background: linear-gradient(152deg, rgba(255,218,0,1) 0%, rgba(0,137,255,1) 78%, rgba(37,190,18,1) 100%);
 }
 
 #btnReset {
@@ -287,4 +291,56 @@ pre {
 
 .icon-text {
   margin-left: 15px;
+}
+
+/* TRINKET HTML */
+
+.trinketHTML {
+  border-radius: 15px;
+}
+
+/* POPUP */
+
+.popup-wrapper {
+  display: none;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.popup {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: medium;
+  width: 100%;
+  max-width: 750px;
+  border-radius: 15px;
+  margin: 10% auto;
+  padding: 35px 15px 15px 15px;
+  background: #aeaeaf;
+  position: relative;
+}
+
+.popup-close {
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+  font-weight: 600;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  color:#1b0722;
+  background: #e0e0e0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: ease 0.2s;
+}
+
+
+.popup-close:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
