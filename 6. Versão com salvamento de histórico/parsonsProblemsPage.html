@@ -281,7 +281,7 @@
     btnEnable("#btnSubmit", "#dbfa50");
     $("#btnReset").prop('disabled', false);
 
-    if (randEx.trinketHTML == "null") {
+    if (randEx.trinketHTML != "null") {
       hasTrinket = true;
       $(".popup-content").append('<div class="added">' + randEx.trinketHTML + '</div>');
     } else {
