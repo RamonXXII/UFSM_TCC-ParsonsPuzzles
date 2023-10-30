@@ -239,7 +239,12 @@ pre {
 }
 
 #btnTestYourself {
-  background: linear-gradient(152deg, rgba(255,218,0,1) 0%, rgba(0,137,255,1) 78%, rgba(37,190,18,1) 100%);
+  background: #b184c2;
+}
+
+#btnTestYourself img {
+  position: relative;
+  bottom: -2px;
 }
 
 #btnReset {
@@ -320,7 +325,7 @@ pre {
   border-radius: 15px;
   margin: 10% auto;
   padding: 35px 15px 15px 15px;
-  background: #aeaeaf;
+  background: #bc8fce;
   position: relative;
 }
 
@@ -333,10 +338,9 @@ pre {
   right: 15px;
   cursor: pointer;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   color:#1b0722;
-  background: #e0e0e0;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background: #ff4242;
   transition: ease 0.2s;
 }
 

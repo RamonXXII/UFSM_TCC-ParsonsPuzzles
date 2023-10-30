@@ -76,14 +76,16 @@
         <div class="buttons-notch">
           <div class="buttons">
             <button class="button" id="btnSubmit">Run</button>
-            <button class="button" id="btnTestYourself" hidden>Teste você mesmo</button>
+            <button class="button" id="btnTestYourself" hidden>
+              <img src="./assets/trinket-logo.png" height="15px">
+              Teste</button>
             <button class="button" id="btnNext" disabled="true" hidden>Continuar</button>
             <div id="msg-salvando" style="display: none;">
               <span class="loader"></span>
               <span class="icon-text">Salvando...</span>
             </div>
             <button class="button" id="btnReset">Resetar</button>
-            <button class="button" id="btnChangeExercise">Trocar Exercício</button>
+            <button class="button" id="btnChangeExercise">Resortear</button>
           </div>
         </div>
         <div class="code-code-area">
@@ -224,7 +226,7 @@
       btnEnable("#btnNext", "#50fa7b");
       $("#btnNext").show();
       if (hasTrinket) {
-        btnEnable("#btnTestYourself", "linear-gradient(152deg, rgba(255,218,0,1) 0%, rgba(0,137,255,1) 78%, rgba(37,190,18,1) 100%)");
+        btnEnable("#btnTestYourself", "#b184c2");
         $("#btnTestYourself").show();
       }
     });
@@ -279,7 +281,7 @@
     btnEnable("#btnSubmit", "#dbfa50");
     $("#btnReset").prop('disabled', false);
 
-    if (randEx.hasOwnProperty('trinketHTML')) {
+    if (randEx.trinketHTML == "null") {
       hasTrinket = true;
       $(".popup-content").append('<div class="added">' + randEx.trinketHTML + '</div>');
     } else {
