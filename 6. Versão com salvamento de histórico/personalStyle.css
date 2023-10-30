@@ -121,6 +121,10 @@ pre {
   margin-left: 10px;
 }
 
+#logo {
+  margin-left: 2rem;
+}
+
 .menu-icon {
   margin-right: 3rem;
   transition: ease 0.2s;
