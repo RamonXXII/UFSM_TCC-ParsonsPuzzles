@@ -9,7 +9,7 @@
 #sortableTrash { width: 42%; }
 #sortable { width: 53%; }
 .sortable-code ul {
-    font-size: 120%;
+    font-size: 100%;
     font-family: monospace;
     list-style: none;
     background-color: #828aa7;

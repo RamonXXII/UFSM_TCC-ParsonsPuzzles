@@ -1,0 +1,130 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Praticando Python Introdutório</title>
+
+  <link rel="icon" href="./assets/logoicon.png">
+
+  <link href="./parsons.css" rel="stylesheet" />
+  <link href="./lib/prettify.css" rel="stylesheet" />
+  <link href="./personalStyle.css" rel="stylesheet" />
+  <link href="./cssAnimations.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!--
+    To use these fonts in style:
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Space Mono', monospace;
+  -->
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/fc3f8d6bba.js" crossorigin="anonymous"></script>
+</head>
+
+
+<!-- Body -->
+
+<body>
+  <div class="popup-wrapper" style="display: none;">
+    <div class="popup">
+      <button class="popup-close">x</button>
+      <div class="popup-content">
+      </div>
+    </div>
+  </div>
+
+
+  <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right">
+    <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar</button>
+    <a id="parsons-problems-link" href="./parsonsProblemsPage.html" class="w3-bar-item w3-button">Inicio</a>
+    <a id="historico-link" href="./historicoPage.html" class="w3-bar-item w3-button">Histórico</a>
+    <a id="sobre-link" href="./sobrePage.html" class="w3-bar-item w3-button">Sobre</a>
+  </div>
+
+
+  <div id="master-container">
+    <div class="container">
+      <div class="navbar">
+        <div id="logo">
+          <a href="./parsonsProblemsPage.html">
+            <img src="./assets/logoicon.png" alt="Icone do site, dois pês, representando Parsons Puzzles" height="55px">
+          </a>
+          <!-- Logo -->
+        </div>
+
+        <div id="progress-bar">
+          <span class="current-level">Nivel 1</span>
+          <div class="progressbar-background">
+            <div class="progressbar-progress">
+              <span class="progressbar-progress-text">0</span>
+            </div>
+          </div>
+          <span class="next-level">Nivel 2</span>
+        </div>
+
+        <div id="menu">
+          <a class="menu-link" href="#" onclick="w3_open()">
+            <i class="menu-icon fa-solid fa-bars fa-2xl"></i>
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</body>
+
+
+<script src="./lib/jquery.min.js"></script>
+<script src="./lib/jquery-ui.min.js"></script>
+<script src="./lib/jquery.ui.touch-punch.min.js"></script>
+<script src="./lib/underscore-min.js"></script>
+<script src="./lib/lis.js"></script>
+<script src="./parsons.js"></script>
+<script src="./lib/prettify.js"></script>
+<script src="../lib/skulpt.js"></script>
+<script src="../lib/skulpt-stdlib.js"></script>
+<script src="https://accounts.google.com/gsi/client" async></script>
+<script src="https://unpkg.com/jwt-decode/build/cjs/index.js"></script>
+<!--<script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>-->
+<script src="./utils.js"></script>
+<script>
+  const userData = getCookie("userData");
+  const auth = getCookie("auth");
+  $(document).ready(function () {
+    getExercicioAleatorio(userData).then(res => {
+      //////////////////////////////
+      $('#menu').click(function(e){
+        e.stopPropagation();
+        w3_open();
+      });
+
+      $('body,html').click(function(e){
+        w3_close();
+      });
+      //////////////////////////////
+    });
+  });
+
+  // Sidebar
+  function w3_open() {
+    //$("#sidebar").css("display","block");
+    $("#sidebar").css("width","20%");
+    $("#sidebar").css("visibility","visible");
+    $("#sidebar").css("opacity","1");
+  }
+
+  function w3_close() {
+    //$("#sidebar").css("display","none");
+    $("#sidebar").css("width","0%");
+    $("#sidebar").css("visibility","hidden");
+    $("#sidebar").css("opacity","0");
+  }
+</script>

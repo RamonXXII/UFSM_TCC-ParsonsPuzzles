@@ -8,6 +8,9 @@ body {
 
 h1 {
   margin: 0px;
+  font-family: 'Space Mono', monospace !important;
+  color: #f0f0f0 !important;
+  font-weight: 700 !important;
 }
 
 a:hover {
@@ -132,7 +135,7 @@ pre {
 }
 
 .menu-icon:hover {
-  color: #50fa7b;
+  color: #838cb5;
 }
 
 /* FEEDBACK RELATED */
@@ -347,4 +350,32 @@ pre {
 
 .popup-close:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+/* SIDEBAR */
+
+#sidebar {
+  display: block; 
+  width: 0%; 
+  right: 0;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: medium;
+  font-weight: 600;
+
+  border-radius: 10px 0px 0px 10px;
+
+  background: #838cb5;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s ease, opacity 0.2s ease, width 0.2s ease;
+}
+
+#sidebar button {
+  cursor: pointer;
+
+  background: #6d7ab6;
+
+  border-bottom: 1px solid #424b6e;
 }
