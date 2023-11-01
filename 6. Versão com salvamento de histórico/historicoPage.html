@@ -136,7 +136,11 @@
   function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(millis / 60000);
     var seconds = ((millis % 60000) / 1000).toFixed(0);
-    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    return {
+      min: minutes,
+      sec: seconds
+    }
+//    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 
   function stringToArray(str) {
@@ -151,7 +155,7 @@
       const startDate = new Date(data[i].startDate)
       const submitDate = new Date(data[i].submitDate)
       var dateDiff = submitDate - startDate; // milliseconds
-      dateDiff = millisToMinutesAndSeconds(dateDiff); // string
+      dateDiff = millisToMinutesAndSeconds(dateDiff); 
       const tries = stringToArray(data[i].triesCount)
 
 
@@ -159,9 +163,9 @@
         '<div class="slider-item">' +
           '<a class="slider-item-link" href="#">' +
             '<p class="exercise-title">Exercício ' + data[i].exerciseEnum + '</p>' +
-            '<p class="exercise-date">Horário de Início: ' + startDate.getMinutes() + ':' + startDate.getSeconds() + '</p>'+
-            '<p class="exercise-date">Horário de Término: ' + submitDate.getMinutes() + ':' + submitDate.getSeconds() + '</p>'+
-            '<p class="exercise-time">Tempo Levado: ' + dateDiff + '</p>'+
+            '<p class="exercise-date">Horário de Início: ' + startDate.getHours() + ':' + startDate.getMinutes() + ':' + startDate.getSeconds() + '</p>'+
+            '<p class="exercise-date">Horário de Término: ' + submitDate.getHours() + ':' + submitDate.getMinutes() + ':' + submitDate.getSeconds() + '</p>'+
+            '<p class="exercise-time">Tempo Levado: ' + dateDiff.min + ' minutos e ' + dateDiff.sec + ' segundos' + '</p>'+
             '<p class="exercise-tries-count">Tentativas: ' + tries.length + '</p>'+
           '</a>' + 
         '</div>'
@@ -194,10 +198,9 @@
         slidesToShow: 3,
         infinite: false,
         dots: true,
-        zIndex: 5,
+        zIndex: 5
       });
     }
-    
   }
 
   $(document).ready(function () {
