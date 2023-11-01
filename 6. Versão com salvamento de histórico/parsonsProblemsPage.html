@@ -7,7 +7,7 @@
 
   <link href="./parsons.css" rel="stylesheet" />
   <link href="./lib/prettify.css" rel="stylesheet" />
-  <link href="./personalStyle.css" rel="stylesheet" />
+  <link href="./parsonsProblemsPageStyle.css" rel="stylesheet" />
   <link href="./cssAnimations.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -39,12 +39,13 @@
     </div>
   </div>
 
-
-  <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right">
-    <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar</button>
-    <a id="parsons-problems-link" href="./parsonsProblemsPage.html" class="w3-bar-item w3-button">Inicio</a>
-    <a id="historico-link" href="./historicoPage.html" class="w3-bar-item w3-button">Histórico</a>
-    <a id="sobre-link" href="./sobrePage.html" class="w3-bar-item w3-button">Sobre</a>
+  <div id="sidebar-wrapper">
+    <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right">
+      <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar</button>
+      <a id="parsons-problems-link" href="./parsonsProblemsPage.html" class="w3-bar-item w3-button">Inicio</a>
+      <a id="historico-link" href="./historicoPage.html" class="w3-bar-item w3-button">Histórico</a>
+      <a id="sobre-link" href="./sobrePage.html" class="w3-bar-item w3-button">Sobre</a>
+    </div>
   </div>
 
 
@@ -354,13 +355,18 @@
       });
 
 
-      $('#menu').click(function(e){
+      $('#menu').click(function (e) {
         e.stopPropagation();
         w3_open();
       });
 
-      $('body,html').click(function(e){
-        w3_close();
+      $('#sidebar-wrapper').click(function (e) {
+        const $target = $(e.target)
+        const conditionalToCloseSidebar = (!$target.is("#sidebar") && !$target.is($("#sidebar").children()))
+
+        if (conditionalToCloseSidebar) {
+          w3_close();
+        }
       });
       //////////////////////////////
     });
@@ -369,15 +375,20 @@
   // Sidebar
   function w3_open() {
     //$("#sidebar").css("display","block");
-    $("#sidebar").css("width","20%");
-    $("#sidebar").css("visibility","visible");
-    $("#sidebar").css("opacity","1");
+    $("#sidebar").css("width", "20%");
+    $("#sidebar").css("visibility", "visible");
+    $("#sidebar").css("opacity", "1");
+    $("#sidebar-wrapper").css("visibility", "visible");
+    $("#sidebar-wrapper").css("opacity", "1");
+
   }
 
   function w3_close() {
     //$("#sidebar").css("display","none");
-    $("#sidebar").css("width","0%");
-    $("#sidebar").css("visibility","hidden");
-    $("#sidebar").css("opacity","0");
+    $("#sidebar").css("width", "0%");
+    $("#sidebar").css("visibility", "hidden");
+    $("#sidebar").css("opacity", "0");
+    $("#sidebar-wrapper").css("visibility", "hidden");
+    $("#sidebar-wrapper").css("opacity", "0");
   }
 </script>
