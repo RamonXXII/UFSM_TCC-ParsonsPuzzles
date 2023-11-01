@@ -163,6 +163,7 @@
         '<div class="slider-item">' +
           '<a class="slider-item-link" href="#">' +
             '<p class="exercise-title">Exercício ' + data[i].exerciseEnum + '</p>' +
+            '<p class="exercise-date">Data: ' + startDate.getUTCDate() + '/' + (startDate.getUTCMonth() + 1) + '/' + startDate.getUTCFullYear() + '</p>'+
             '<p class="exercise-date">Horário de Início: ' + startDate.getHours() + ':' + startDate.getMinutes() + ':' + startDate.getSeconds() + '</p>'+
             '<p class="exercise-date">Horário de Término: ' + submitDate.getHours() + ':' + submitDate.getMinutes() + ':' + submitDate.getSeconds() + '</p>'+
             '<p class="exercise-time">Tempo Levado: ' + dateDiff.min + ' minutos e ' + dateDiff.sec + ' segundos' + '</p>'+
