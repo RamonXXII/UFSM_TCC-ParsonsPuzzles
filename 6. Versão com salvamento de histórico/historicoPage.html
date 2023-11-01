@@ -171,11 +171,15 @@
   }
 
   function buildSliderItems (userHistory) {
-    var data = [[]]
+    var data = []
     // [ nivel 1: [ex1: {}, ex2: {}] , nivel 2: [ex1: {}] ]
 
     for(var i = 0; i < userHistory.length; i++) {
-      data[userHistory[i].exerciseDifficulty].push(userHistory[i])
+      console.log(userHistory[i])
+      if(typeof data[(userHistory[i].exerciseDifficulty)] === 'undefined') { 
+        data.push([]);
+      }
+      data[(userHistory[i].exerciseDifficulty)].push(userHistory[i]);
     }
 
     for(var i = 0; i < data.length; i++) {
