@@ -23,6 +23,14 @@ function getRandExURL(userId = null, dificuldade = 0) {
 }
 
 
+function getHistoricoURL(authentication = null) {
+    var url = "https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getHistorico";
+
+    url = url + "&authentication=" + JSON.stringify(authentication);
+
+    return url;
+}
+
 function getCookie(cName) {
     const name = cName + "=";
     const cDecoded = decodeURIComponent(document.cookie); //to be careful

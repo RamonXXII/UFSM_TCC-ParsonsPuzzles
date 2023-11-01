@@ -36,6 +36,10 @@ pre {
   border: 1px solid #676c88;
 }
 
+p {
+  margin: 5px 0px 5px 0px;
+}
+
 
 /* NAVBAR RELATED */
 
@@ -157,6 +161,7 @@ pre {
 /* SIDEBAR */
 
 #sidebar-wrapper {
+  z-index: 1000;
   visibility: hidden;
   background: rgba(0,0,0,0.5);
   position: fixed;
@@ -201,11 +206,19 @@ pre {
   font-size: medium;
   width: (100% - 10rem);
   height: fit-content;
-  border-radius: 15px;
+  border-radius: 10px;
   margin: 2rem 5rem 2rem 5rem;
-  padding: 20px 15px 20px 15px;
-  background: #bc8fce;
+  padding: 15px 15px 20px 15px;
+  background: #3c4050;
   position: relative;
+}
+
+.slider-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: larger;
+  margin-bottom: 15px;
+  color: #f0f0f0;
 }
 
 .slider-item {
@@ -214,7 +227,26 @@ pre {
   font-size: medium;
   width: 98% !important;
   text-wrap: wrap;
-  border-radius: 15px;
-  padding: 20px 15px;
-  background: #792b97;
+  border-radius: 10px;
+  padding: 15px 15px;
+  background: #b979d3;
+}
+
+.exercise-title {
+  font-size: medium;
+}
+
+.exercise-date {
+  font-size: small;
+  color: #292929;
+}
+
+.exercise-time {
+  font-size: small;
+  color: #292929;
+}
+
+.exercise-tries-count {
+  font-size: small;
+  color: #292929;
 }
