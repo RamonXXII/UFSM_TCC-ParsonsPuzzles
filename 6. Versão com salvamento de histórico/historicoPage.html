@@ -45,6 +45,7 @@
   </div>
 
 
+
   <div id="sidebar-wrapper">
     <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right">
       <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar</button>
@@ -80,7 +81,7 @@
         </a>
       </div>
     </div>
-<!--
+    <!--
   <div class="slider-wrapper">
     <div class="slider-title">Nivel 0</div>
     <div class="slider">
@@ -122,6 +123,7 @@
 <script>
   const userData = getCookie("userData");
   const auth = getCookie("auth");
+  var allHistoryData = [];
 
   function getHistorico(authentication) {
     return fetch(getHistoricoURL(authentication),
@@ -140,7 +142,7 @@
       min: minutes,
       sec: seconds
     }
-//    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    //    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 
   function stringToArray(str) {
@@ -148,51 +150,46 @@
   }
 
   function sliderItemContent(data, nivel) {
-    console.log(data)
-
     for (var i = 0; i < data.length; i++) {
 
       const startDate = new Date(data[i].startDate)
       const submitDate = new Date(data[i].submitDate)
       var dateDiff = submitDate - startDate; // milliseconds
-      dateDiff = millisToMinutesAndSeconds(dateDiff); 
+      dateDiff = millisToMinutesAndSeconds(dateDiff);
       const tries = stringToArray(data[i].triesCount)
 
 
       $(".slider.nivel" + nivel).append(
         '<div class="slider-item">' +
-          '<a class="slider-item-link" href="#">' +
-            '<p class="exercise-title">Exercício ' + data[i].exerciseEnum + '</p>' +
-            '<p class="exercise-date">Data: ' + startDate.getUTCDate() + '/' + (startDate.getUTCMonth() + 1) + '/' + startDate.getUTCFullYear() + '</p>'+
-            '<p class="exercise-date">Horário de Início: ' + startDate.getHours() + ':' + startDate.getMinutes() + ':' + startDate.getSeconds() + '</p>'+
-            '<p class="exercise-date">Horário de Término: ' + submitDate.getHours() + ':' + submitDate.getMinutes() + ':' + submitDate.getSeconds() + '</p>'+
-            '<p class="exercise-time">Tempo Levado: ' + dateDiff.min + ' minutos e ' + dateDiff.sec + ' segundos' + '</p>'+
-            '<p class="exercise-tries-count">Tentativas: ' + tries.length + '</p>'+
-          '</a>' + 
+        '<a class="slider-item-link nivel' + nivel + ' index' + i + '" href="#">' +
+        '<p class="exercise-title">Exercício ' + data[i].exerciseEnum + '</p>' +
+        '<p class="exercise-date">Data: ' + startDate.getUTCDate() + '/' + (startDate.getUTCMonth() + 1) + '/' + startDate.getUTCFullYear() + '</p>' +
+        '<p class="exercise-date">Horário de Início: ' + startDate.getHours() + ':' + startDate.getMinutes() + ':' + startDate.getSeconds() + '</p>' +
+        '<p class="exercise-date">Horário de Término: ' + submitDate.getHours() + ':' + submitDate.getMinutes() + ':' + submitDate.getSeconds() + '</p>' +
+        '<p class="exercise-time">Tempo Levado: ' + dateDiff.min + ' minutos e ' + dateDiff.sec + ' segundos' + '</p>' +
+        '<p class="exercise-tries-count">Tentativas: ' + tries.length + '</p>' +
+        '</a>' +
         '</div>'
       );
-
     }
   }
 
-  function buildSliderItems (userHistory) {
-    var data = []
+  function buildSliderItems(userHistory) {
     // [ nivel 1: [ex1: {}, ex2: {}] , nivel 2: [ex1: {}] ]
 
-    for(var i = 0; i < userHistory.length; i++) {
-      console.log(userHistory[i])
-      if(typeof data[(userHistory[i].exerciseDifficulty)] === 'undefined') { 
-        data.push([]);
+    for (var i = 0; i < userHistory.length; i++) {
+      if (typeof allHistoryData[(userHistory[i].exerciseDifficulty)] === 'undefined') {
+        allHistoryData.push([]);
       }
-      data[(userHistory[i].exerciseDifficulty)].push(userHistory[i]);
+      allHistoryData[(userHistory[i].exerciseDifficulty)].push(userHistory[i]);
     }
 
-    for(var i = 0; i < data.length; i++) {
+    for (var i = 0; i < allHistoryData.length; i++) {
       $(".container").append('<div class="slider-wrapper nivel' + i + '"></div>');
       $(".slider-wrapper.nivel" + i).append('<div class="slider-title nivel' + i + '">Nivel ' + i + '</div>');
       $(".slider-wrapper.nivel" + i).append('<div class="slider nivel' + i + '"></div>');
 
-      sliderItemContent(data[i], i)
+      sliderItemContent(allHistoryData[i], i)
 
       $('.slider.nivel' + i).slick({
         easing: 'linear',
@@ -204,45 +201,82 @@
     }
   }
 
+  function getHistoryDataFromSliderClick(event) {
+    const className = event.currentTarget.className
+    var nivel = className.substring(className.indexOf('nivel') + 5)
+    nivel = parseInt(nivel.substring(0, nivel.indexOf(' ')))
+
+    var index = parseInt(className.substring(className.indexOf('index') + 5))
+
+    return {
+      "nivel": nivel,
+      "index": index
+    }
+  }
+
+  function populatePopup(thisData) {
+
+    const startDate = new Date(thisData.startDate)
+    const submitDate = new Date(thisData.submitDate)
+    var dateDiff = submitDate - startDate; // milliseconds
+    dateDiff = millisToMinutesAndSeconds(dateDiff);
+    const tries = stringToArray(thisData.triesCount)
+
+
+    $(".popup-content").append(
+      '<div class="popup-added">' +
+      '<p class="exercise-title">Exercício ' + thisData.exerciseEnum + '</p>' +
+      '<p class="exercise-date">Data: ' + startDate.getUTCDate() + '/' + (startDate.getUTCMonth() + 1) + '/' + startDate.getUTCFullYear() + '</p>' +
+      '<p class="exercise-date">Horário de Início: ' + startDate.getHours() + ':' + startDate.getMinutes() + ':' + startDate.getSeconds() + '</p>' +
+      '<p class="exercise-date">Horário de Término: ' + submitDate.getHours() + ':' + submitDate.getMinutes() + ':' + submitDate.getSeconds() + '</p>' +
+      '<p class="exercise-time">Tempo Levado: ' + dateDiff.min + ' minutos e ' + dateDiff.sec + ' segundos' + '</p>' +
+      '<p class="exercise-tries-count">Tentativas: ' + tries.length + '</p>' +
+      '</div>');
+  }
+
+  function cleanPopupContent() {
+    $(".popup-added").remove();
+  }
+
   $(document).ready(function () {
     (getHistorico(auth)).then(res => {
-    //////////////////////////////
+      //////////////////////////////
+      buildSliderItems(res.userHistory);
 
-    //var data = [[]]
-    // [ nivel 1: [ex1: {}, ex2: {}] , nivel 2: [ex1: {}] ]
+      $('#menu').click(function (e) {
+        e.stopPropagation();
+        w3_open();
+      });
 
-    /*for(var i = 0; i < res.userHistory.length; i++) {
-      data[res.userHistory[i].exerciseDifficulty].push(res.userHistory[i])
-    }
+      $('#sidebar-wrapper').click(function (e) {
+        const $target = $(e.target)
+        const conditionalToCloseSidebar = (!$target.is("#sidebar") && !$target.is($("#sidebar").children()))
 
-    
-    console.log((new Date(data[0][0].startDate)).getMinutes())
+        if (conditionalToCloseSidebar) {
+          w3_close();
+        }
+      });
 
-    
-    $('.slider').slick({
-      easing: 'linear',
-      slidesToShow: 3,
-      infinite: false,
-      dots: true,
-      zIndex: 5,
-    });*/
+      $('.slider-item-link').click(function (e) {
+        const sliderClickData = getHistoryDataFromSliderClick(e);
+        populatePopup(allHistoryData[sliderClickData.nivel][sliderClickData.index]);
 
-    buildSliderItems(res.userHistory);
+        $(".popup-wrapper").css('display', 'block');
+      });
 
-    $('#menu').click(function (e) {
-      e.stopPropagation();
-      w3_open();
-    });
+      $(".popup-close").click(function (event) {
+        close_popup();
+      });
 
-    $('#sidebar-wrapper').click(function (e) {
-      const $target = $(e.target)
-      const conditionalToCloseSidebar = (!$target.is("#sidebar") && !$target.is($("#sidebar").children()))
+      $('.popup-wrapper').click(function (e) {
+        const $target = $(e.target)
+        const conditionalToClosePopup = (!$target.is(".popup") && !$target.is($(".popup").children()) && !$target.is(".popup-content") && !$target.is($(".popup-content").children()) && !$target.is(".popup-added") && !$target.is($(".popup-added").children()))
 
-      if (conditionalToCloseSidebar) {
-        w3_close();
-      }
-    });
-    //////////////////////////////
+        if (conditionalToClosePopup) {
+          close_popup();
+        }
+      });
+      //////////////////////////////
     });
   });
 
@@ -264,5 +298,10 @@
     $("#sidebar").css("opacity", "0");
     $("#sidebar-wrapper").css("visibility", "hidden");
     $("#sidebar-wrapper").css("opacity", "0");
+  }
+
+  function close_popup() {
+    cleanPopupContent();
+    $(".popup-wrapper").css('display', 'none');
   }
 </script>

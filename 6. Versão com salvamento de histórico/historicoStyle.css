@@ -116,6 +116,7 @@ p {
 /* POPUP */
 
 .popup-wrapper {
+  z-index: 500;
   display: none;
   background: rgba(0,0,0,0.5);
   position: fixed;
