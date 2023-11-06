@@ -7,10 +7,15 @@
 
   <link href="./parsons.css" rel="stylesheet" />
   <link href="./lib/prettify.css" rel="stylesheet" />
-  <link href="./personalStyle.css" rel="stylesheet" />
-  <link href="./cssAnimations.css" rel="stylesheet" />
+  <link href="./sobrePageStyle.css" rel="stylesheet" />
+  <link href="./cssAnimationsHistoryPage.css" rel="stylesheet" />
 
+  <!-- Sidebar required style -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+  <!-- Carousel required style -->
+  <link rel="stylesheet" href="./lib/slick.css">
+  <link rel="stylesheet" href="./lib/slick-theme.css">
 
 
   <!-- Google Fonts -->
@@ -40,51 +45,53 @@
   </div>
 
 
-  <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right">
-    <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar</button>
-    <a id="parsons-problems-link" href="./parsonsProblemsPage.html" class="w3-bar-item w3-button">Inicio</a>
-    <a id="historico-link" href="./historicoPage.html" class="w3-bar-item w3-button">Histórico</a>
-    <a id="sobre-link" href="./sobrePage.html" class="w3-bar-item w3-button">Sobre</a>
+
+  <div id="sidebar-wrapper">
+    <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right">
+      <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar</button>
+      <a id="parsons-problems-link" href="./parsonsProblemsPage.html" class="w3-bar-item w3-button">Home</a>
+      <a id="historico-link" href="./historicoPage.html" class="w3-bar-item w3-button">Histórico</a>
+      <a id="sobre-link" href="./sobrePage.html" class="w3-bar-item w3-button">Sobre</a>
+      <a id="logout-link" href="#" class="w3-bar-item w3-button">Log out</a>
+    </div>
   </div>
 
 
-  <div id="master-container">
-    <div class="container">
-      <div class="navbar">
-        <div id="logo">
-          <a href="./parsonsProblemsPage.html">
-            <img src="./assets/logoicon.png" alt="Icone do site, dois pês, representando Parsons Puzzles" height="55px">
-          </a>
-          <!-- Logo -->
-        </div>
+  <div class="container">
+    <div class="navbar">
 
-        <div id="progress-bar">
-          <span class="current-level">Nivel 1</span>
-          <div class="progressbar-background">
-            <div class="progressbar-progress">
-              <span class="progressbar-progress-text">0</span>
-            </div>
-          </div>
-          <span class="next-level">Nivel 2</span>
-        </div>
-
-        <div id="menu">
-          <a class="menu-link" href="#" onclick="w3_open()">
-            <i class="menu-icon fa-solid fa-bars fa-2xl"></i>
-          </a>
-        </div>
+      <div id="logo">
+        <a href="./parsonsProblemsPage.html">
+          <img src="./assets/logoicon.png" alt="Icone do site, dois pês, representando Parsons Puzzles" height="80px">
+          <p><span>Python</span> <span>Parsons</span> Puzzles</p>
+        </a>
       </div>
 
-
+      <div id="menu">
+        <a class="menu-link" href="#" onclick="w3_open()">
+          <i class="menu-icon fa-solid fa-bars fa-2xl"></i>
+        </a>
+      </div>
     </div>
+
+    <a class="return-to-main-page" href="./parsonsProblemsPage.html">
+      <i class="fa-solid fa-rotate-left"></i>
+      Voltar para exercícios
+    </a>
+
+    <!--
+      inserir texto de sobre aqui
+    -->
 
   </div>
 </body>
 
 
-<script src="./lib/jquery.min.js"></script>
+
 <script src="./lib/jquery-ui.min.js"></script>
 <script src="./lib/jquery.ui.touch-punch.min.js"></script>
+<script src="./lib/jquery.min.js"></script>
+<script src="./lib/slick.js"></script>
 <script src="./lib/underscore-min.js"></script>
 <script src="./lib/lis.js"></script>
 <script src="./parsons.js"></script>
@@ -98,33 +105,53 @@
 <script>
   const userData = getCookie("userData");
   const auth = getCookie("auth");
-  $(document).ready(function () {
-    getExercicioAleatorio(userData).then(res => {
-      //////////////////////////////
-      $('#menu').click(function(e){
-        e.stopPropagation();
-        w3_open();
-      });
 
-      $('body,html').click(function(e){
+  $(document).ready(function () {
+    if (userData === null || auth === null) {
+      $('#menu').css('display', 'none');
+      $('#parsons-problems-link').css('display', 'none');
+      $('#historico-link').css('display', 'none');
+      $(".return-to-main-page").attr("href", "./index.html")
+      $('.return-to-main-page').html('<i class="fa-solid fa-rotate-left"></i>Voltar para página de login')
+    }
+
+    $('#menu').click(function (e) {
+      e.stopPropagation();
+      w3_open();
+    });
+
+    $('#sidebar-wrapper').click(function (e) {
+      const $target = $(e.target)
+      const conditionalToCloseSidebar = (!$target.is("#sidebar") && !$target.is($("#sidebar").children()))
+
+      if (conditionalToCloseSidebar) {
         w3_close();
-      });
-      //////////////////////////////
+      }
+    });
+
+    $('#logout-link').click(function (e) {
+      logout(e);
     });
   });
 
   // Sidebar
   function w3_open() {
     //$("#sidebar").css("display","block");
-    $("#sidebar").css("width","20%");
-    $("#sidebar").css("visibility","visible");
-    $("#sidebar").css("opacity","1");
+    $("#sidebar").css("width", "20%");
+    $("#sidebar").css("visibility", "visible");
+    $("#sidebar").css("opacity", "1");
+    $("#sidebar-wrapper").css("visibility", "visible");
+    $("#sidebar-wrapper").css("opacity", "1");
+
   }
 
   function w3_close() {
     //$("#sidebar").css("display","none");
-    $("#sidebar").css("width","0%");
-    $("#sidebar").css("visibility","hidden");
-    $("#sidebar").css("opacity","0");
+    $("#sidebar").css("width", "0%");
+    $("#sidebar").css("visibility", "hidden");
+    $("#sidebar").css("opacity", "0");
+    $("#sidebar-wrapper").css("visibility", "hidden");
+    $("#sidebar-wrapper").css("opacity", "0");
   }
+
 </script>

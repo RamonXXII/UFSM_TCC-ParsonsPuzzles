@@ -52,6 +52,7 @@
       <a id="parsons-problems-link" href="./parsonsProblemsPage.html" class="w3-bar-item w3-button">Home</a>
       <a id="historico-link" href="./historicoPage.html" class="w3-bar-item w3-button">Histórico</a>
       <a id="sobre-link" href="./sobrePage.html" class="w3-bar-item w3-button">Sobre</a>
+      <a id="logout-link" href="#" class="w3-bar-item w3-button">Log out</a>
     </div>
   </div>
 
@@ -62,7 +63,6 @@
         <a href="./parsonsProblemsPage.html">
           <img src="./assets/logoicon.png" alt="Icone do site, dois pês, representando Parsons Puzzles" height="55px">
         </a>
-        <!-- Logo -->
       </div>
 
       <div id="progress-bar">
@@ -252,6 +252,7 @@
       return ('<div class="trinketHTML">' + thisData.trinketHTML + '</div>');
     } else {
       return (thisData.exercise);
+      console.log(thisData.trinketHTML)
     }
   }
 
@@ -297,11 +298,15 @@
 
       $('.popup-wrapper').click(function (e) {
         const $target = $(e.target)
-        const conditionalToClosePopup = (!$target.is(".popup") && !$target.is($(".popup").children()) && !$target.is(".popup-content") && !$target.is($(".popup-content").children()) && !$target.is(".popup-added") && !$target.is($(".popup-added").children()))
+        const conditionalToClosePopup = (!$target.is(".popup") && !$target.is($(".popup").children()) && !$target.is(".popup-content") && !$target.is($(".popup-content").children()) && !$target.is(".popup-added") && !$target.is($(".popup-added").children()) && !$target.is("pre code") && !$target.is($("pre code").children()))
 
         if (conditionalToClosePopup) {
           close_popup();
         }
+      });
+
+      $('#logout-link').click(function (e) {
+        logout(e);
       });
       //////////////////////////////
     });

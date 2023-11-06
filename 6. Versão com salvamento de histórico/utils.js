@@ -39,10 +39,37 @@ function getCookie(cName) {
     cArr.forEach(val => {
         if (val.indexOf(name) === 0) res = val.substring(name.length);
     });
-    res = JSON.parse(res);
+
+    if (typeof res == "undefined") {
+        res = null;
+    } else {
+        res = JSON.parse(res);
+    }
     return res;
 }
 
+/*
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+*/
 function setUserLevel(userLevelInfo) {
     const progressBarPercentRate = 10;
 
@@ -67,4 +94,21 @@ function btnDisable(btnName) {
     $(btnName).prop('disabled', true);
     $(btnName).css('background-color', '#a5a5a5');
     $(btnName).css('cursor', 'wait');
+}
+
+function del_cookie(name) {
+    document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+}
+
+function del_cookies() {
+    del_cookie('userData');
+    del_cookie('auth');
+}
+
+function logout(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    del_cookies();
+    window.location.href = './index.html';
 }

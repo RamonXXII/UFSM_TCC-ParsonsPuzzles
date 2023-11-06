@@ -88,6 +88,16 @@
 
 
     window.onload = function () {
+
+      $("#consent-cb").change(function () {
+        if (this.checked) {
+          $("#buttonDiv").prop('hidden', false);
+        } else {
+          $("#buttonDiv").prop('hidden', true);
+        }
+      });
+
+
       google.accounts.id.initialize({
         client_id: "1030847469866-kllf62lh6mu02mvasd79erm5jo6b9t69.apps.googleusercontent.com",
         callback: handleCredentialResponse
@@ -111,12 +121,23 @@
 
 <body>
   <div class="container">
-    <div class="login-image">
-      <img src="./assets/teste-de-imagem.png" alt="Código em python estilizado e rotacionado.">
+    <div class="navbar">
+      <div id="logo">
+        <img src="./assets/logoicon.png" alt="Icone do site, dois pês, representando Parsons Puzzles" height="80px">
+        <p><span>Python</span> <span>Parsons</span> Puzzles</p>
+      </div>
     </div>
-    <div class="login-form">
-      <div id="buttonDiv"></div>
-      <p></p>
+
+    <div class="login-center">
+      <div class="login-image">
+        <img src="./assets/login_page_image.png" alt="Código em python estilizado e rotacionado.">
+      </div>
+      <div class="login-form">
+        <div id="buttonDiv"></div>
+        <div class="consent-area">
+          <p>Ao realizar login com Google, estou consentindo com as<br><a href="./termosECondicoesPage.html">Informações, Políticas de Privacidade e Termos de Uso</a> referentes<br>a esta plataforma, desenvolvida durante um projeto de TCC.</p>
+        </div>
+      </div>
     </div>
   </div>
 </body>
