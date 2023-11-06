@@ -87,17 +87,18 @@
       <div class="code-area">
         <div class="buttons-notch">
           <div class="buttons">
-            <button class="button" id="btnSubmit">Run</button>
+            <button class="button" id="btnChangeExercise">Resortear</button>
+            <button class="button" id="btnReset">Resetar</button>
             <button class="button" id="btnTestYourself" hidden>
               <img src="./assets/trinket-logo.png" height="15px">
-              Teste</button>
+              Teste
+            </button>
             <button class="button" id="btnNext" disabled="true" hidden>Continuar</button>
             <div id="msg-salvando" style="display: none;">
               <span class="loader"></span>
               <span class="icon-text">Salvando...</span>
             </div>
-            <button class="button" id="btnReset">Resetar</button>
-            <button class="button" id="btnChangeExercise">Resortear</button>
+            <button class="button" id="btnSubmit">Run</button>
           </div>
         </div>
         <div class="code-code-area">
@@ -218,32 +219,35 @@
       "auth": auth
     }
 
+    try {
+      fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          redirect: "follow",
+          body: JSON.stringify(postData), // body data type must match "Content-Type" header
+        }
+      ).then(response => {
+        return response.json();
+      }).then(res => {
+        console.log(res);
 
-    fetch("https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        redirect: "follow",
-        body: JSON.stringify(postData), // body data type must match "Content-Type" header
-      }
-    ).then(response => {
-      return response.json();
-    }).then(res => {
-      console.log(res);
-      setUserLevel(res.data.userLevelInfo);
+        setUserLevel(res.data.userLevelInfo);
 
-      $("#msg-salvando").css('display', 'none');
+        $("#msg-salvando").css('display', 'none');
 
-      btnEnable("#btnNext", "#50fa7b");
-      $("#btnNext").show();
-      if (hasTrinket) {
-        btnEnable("#btnTestYourself", "#b184c2");
-        $("#btnTestYourself").show();
-      }
-    });
-
+        btnEnable("#btnNext", "#50fa7b");
+        $("#btnNext").show();
+        if (hasTrinket) {
+          btnEnable("#btnTestYourself", "#b184c2");
+          $("#btnTestYourself").show();
+        }
+      });
+    } catch (error) {
+      window.alert("Algo deu errado :/\nRecarregue a página.");
+    }
   }
 
   function getExercicioAleatorio(userData) {

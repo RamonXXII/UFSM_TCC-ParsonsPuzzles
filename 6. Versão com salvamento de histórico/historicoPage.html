@@ -8,7 +8,7 @@
   <link href="./parsons.css" rel="stylesheet" />
   <link href="./lib/prettify.css" rel="stylesheet" />
   <link href="./historicoStyle.css" rel="stylesheet" />
-  <link href="./cssAnimations.css" rel="stylesheet" />
+  <link href="./cssAnimationsHistoryPage.css" rel="stylesheet" />
 
   <!-- Sidebar required style -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -81,20 +81,32 @@
         </a>
       </div>
     </div>
+
+    <a class="return-to-main-page" href="./parsonsProblemsPage.html">
+      <i class="fa-solid fa-rotate-left"></i>
+      Voltar para página de exercícios
+    </a>
+
+    <div id="msg-carregando" style="display: none;">
+      <span class="loader"></span>
+      <span class="icon-text">Carregando...</span>
+    </div>
+
+
     <!--
-  <div class="slider-wrapper">
-    <div class="slider-title">Nivel 0</div>
-    <div class="slider">
-      <div class="slider-item"> 
-        <a class="slider-item-link" href="#">
-          <p class="exercise-title">Exercício 1</p>
-          <p class="exercise-date">Horário de Início: 13:40</p>
-          <p class="exercise-date">Horário de Término: 13:45</p>
-          <p class="exercise-time">Tempo Levado: 5 minutos</p>
-          <p class="exercise-tries-count">Tentativas: 3</p>
-        </a>
-      </div>
-      <div class="slider-item"> Slide 2</div>
+      <div class="slider-wrapper">
+        <div class="slider-title">Nivel 0</div>
+        <div class="slider">
+          <div class="slider-item"> 
+            <a class="slider-item-link" href="#">
+              <p class="exercise-title">Exercício 1</p>
+              <p class="exercise-date">Horário de Início: 13:40</p>
+              <p class="exercise-date">Horário de Término: 13:45</p>
+              <p class="exercise-time">Tempo Levado: 5 minutos</p>
+              <p class="exercise-tries-count">Tentativas: 3</p>
+            </a>
+          </div>
+          <div class="slider-item"> Slide 2</div>
       <div class="slider-item"> Slide 3</div>
       <div class="slider-item"> Slide 4</div>
     </div>
@@ -239,8 +251,14 @@
   }
 
   $(document).ready(function () {
+
+    $("#msg-carregando").css("display", "flex");
+
     (getHistorico(auth)).then(res => {
       //////////////////////////////
+      $("#msg-carregando").css("display", "none");
+
+      setUserLevel(res.userLevelInfo);
       buildSliderItems(res.userHistory);
 
       $('#menu').click(function (e) {
