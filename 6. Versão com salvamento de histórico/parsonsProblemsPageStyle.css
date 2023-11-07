@@ -192,6 +192,10 @@ pre {
   margin-top: 20px;
 }
 
+.added pre {
+  padding-left: 5px;
+}
+
 /* CODE AREA RELATED */
 
 .code-area {
