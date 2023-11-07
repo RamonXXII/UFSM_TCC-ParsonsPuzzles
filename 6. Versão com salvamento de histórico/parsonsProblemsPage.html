@@ -103,6 +103,10 @@
           </div>
         </div>
         <div class="code-code-area">
+          <div id="msg-carregando" style="display: none;">
+            <span class="loader-carregando"></span>
+            <span class="icon-text">Carregando...</span>
+          </div>
           <div id="sortableTrash" class="sortable-code"></div>
           <div id="sortable" class="sortable-code"></div>
         </div>
@@ -314,8 +318,13 @@
 
 
   $(document).ready(function () {
+    $("#msg-carregando").css("display","flex");
+    
+
     getExercicioAleatorio(userData).then(res => {
       //////////////////////////////
+      $("#msg-carregando").css("display","none");
+
       setNovoExercicio(res);
 
       console.log(parson)
