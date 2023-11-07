@@ -112,3 +112,8 @@ function logout(e) {
     del_cookies();
     window.location.href = './index.html';
 }
+
+function accessDenied_returningToMain() {
+    del_cookies();
+    window.location.href = './index.html';
+}

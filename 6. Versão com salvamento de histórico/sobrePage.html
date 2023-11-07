@@ -79,10 +79,10 @@
       Voltar para exercícios
     </a>
 
-    <!--
-      inserir texto de sobre aqui
-    -->
-
+    <p class="sobre-texto"><strong><span>Python</span> <span>Parsons</span> Puzzles</strong> surgiu a partir do projeto de Trabalho de Conclusão de Curso do aluno João Vitor Forgearini Beltrame, estudante de Ciência da Computação na Universidade Federal de Santa Maria, juntamente com sua orientadora e professora, Dra. Andrea Schwertner Charão.</p>
+    <p class="sobre-texto">O objetivo desta plataforma é apoiar os alunos iniciantes na programação nos seus estudos, disponibilizando exercícios de Python, histórico de exercícios e em torno de 20 níveis incrementáveis de dificuldade.</p>
+    <p class="sobre-texto">A plataforma utiliza a biblioteca <strong><a href="https://js-parsons.github.io/">js-parsons</a></strong> para correção de exercícios, proporcionando um tipo de correção diferente para níveis diferentes de dificuldade (alguns com testes unitários, outros com testes com variáveis e, para níveis mais simples, correspondência de strings). Já o back-end foi desenvolvido utilizando o <a href="https://www.google.com/script/start/">Google Apps Script</a> para gerenciamento de requests e <a href="https://www.google.com/sheets/about/">Google Sheets</a> para o armazenamento de dados, fazendo com que esta plataforma se mantenha online por um longo tempo de forma totalmente gratuita.</p>
+    <p class="sobre-texto">O <a href="https://github.com/joaov230/TCC-ParsonsPuzzles">repositório oficial desta plataforma (no momento, ainda privado)</a>, mostrando sua evolução e versão final, também como sua documentação, pode ser encontrando no <a href="https://github.com/joaov230">GitHub do João Vitor</a>.</p>
   </div>
 </body>
 
@@ -111,8 +111,8 @@
       $('#menu').css('display', 'none');
       $('#parsons-problems-link').css('display', 'none');
       $('#historico-link').css('display', 'none');
-      $(".return-to-main-page").attr("href", "./index.html")
-      $('.return-to-main-page').html('<i class="fa-solid fa-rotate-left"></i>Voltar para página de login')
+      $(".return-to-main-page").attr("href", "./index.html");
+      $('.return-to-main-page').html('<i class="fa-solid fa-rotate-left"></i>Voltar para página de login');
     }
 
     $('#menu').click(function (e) {

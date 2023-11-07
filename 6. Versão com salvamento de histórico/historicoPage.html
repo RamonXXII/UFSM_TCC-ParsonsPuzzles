@@ -137,6 +137,11 @@
   const auth = getCookie("auth");
   var allHistoryData = [];
 
+
+  if (userData === null || auth === null) {
+    accessDenied_returningToMain();
+  }
+
   function getHistorico(authentication) {
     return fetch(getHistoricoURL(authentication),
       {

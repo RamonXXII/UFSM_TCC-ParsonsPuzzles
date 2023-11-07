@@ -192,6 +192,10 @@ pre code p {
   margin-bottom: 20px !important;
 }
 
+pre code pre {
+  font-weight: 400;
+}
+
 .trinketHTML iframe {
   border-radius: 10px;
   max-height: 300px;

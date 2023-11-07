@@ -303,3 +303,26 @@ pre code p {
 .return-to-main-page i {
   margin-right: 8px;
 }
+
+/* TEXTO */
+
+.sobre-texto {
+  margin: 1rem 5rem 1rem 5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: medium;
+  text-wrap: wrap;
+  color: #f0f0f0;
+}
+
+.sobre-texto span:nth-child(1) {
+  color: #339cd1;
+}
+
+.sobre-texto span:nth-child(2) {
+  color: #e9a931;
+}
+
+.sobre-texto a {
+  color: #24bed3;
+}

@@ -144,6 +144,11 @@
 <script>
   const userData = getCookie("userData");
   const auth = getCookie("auth");
+
+  if (userData === null || auth === null) {
+    accessDenied_returningToMain();
+  }
+
   var randEx;
   var tentativasCont;
   var tentativas = [];
