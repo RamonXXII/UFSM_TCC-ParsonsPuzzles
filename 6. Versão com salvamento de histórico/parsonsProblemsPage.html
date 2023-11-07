@@ -318,6 +318,15 @@
       //////////////////////////////
       setNovoExercicio(res);
 
+      console.log(parson)
+
+      window.addEventListener("beforeunload", function(e) {
+        if(Object.keys(parson.states).length && $("#btnNext").prop('disabled') === true) {
+          e.preventDefault();
+        }
+      });
+      
+
       // Muda o exercício (GET de um novo exercício)
       $("#btnChangeExercise").click(function (event) {
         event.preventDefault();

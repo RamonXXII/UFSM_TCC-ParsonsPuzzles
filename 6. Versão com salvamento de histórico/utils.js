@@ -6,6 +6,26 @@ function isNullString(value) {
     }
 }
 
+function checkIfSolutionIsCorrect(fb) {
+    if (Array.isArray(fb)) {
+        if (fb.length > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    } else if (fb.hasOwnProperty("feedback")) {
+        if (fb.success) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if (fb.success) {
+            return true;
+        }
+    }
+}
+
 function getRandExURL(userId = null, dificuldade = 0) {
     var url = "https://script.google.com/macros/s/AKfycbwZKg-bWoZs_OgVkRUmvxxfrdQeSTWbk3lANkRDUPik-zAvLWfieRkhCgFrU415LYYg/exec?actionRequest=getExercicioAleatorio";
 
