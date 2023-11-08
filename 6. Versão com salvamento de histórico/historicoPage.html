@@ -238,8 +238,6 @@
     dateDiff = millisToMinutesAndSeconds(dateDiff);
     const tries = stringToArray(thisData.triesCount)
 
-    console.log(thisData)
-
     $(".popup-content").append(
       '<div class="popup-added">' +
       '<p class="exercise-title">Exercício ' + thisData.exerciseEnum + '</p>' +
@@ -257,7 +255,6 @@
       return ('<div class="trinketHTML">' + thisData.trinketHTML + '</div>');
     } else {
       return (thisData.exercise);
-      console.log(thisData.trinketHTML)
     }
   }
 

@@ -102,7 +102,39 @@ function setUserLevel(userLevelInfo) {
         levelPercent = "3%";
     }
     $(".progressbar-progress").css("width",levelPercent);
-  }
+}
+
+function showEndOfTestModeAlert(userLevelInfo) {
+    $(".added").remove();
+    $(".popup-content").append('<div class="added"><h2><i class="fa-solid fa-user-check fa-lg"></i>Parabéns e obrigado pela participação!</h2><p>Parabéns, você chegou ao final da versão de testes ou por chegar no nível máximo atual, ou por realizar todos os exercícios disponíveis até o momento!</p><p>A partir daqui, a plataforma ainda está sendo refinada, portanto o acesso não é recomendado, siga por sua própria conta e risco (se conseguir).</p><p>Deseja ir para página de "Sobre a Plataforma", "Histórico" ou realizar "Log Out"?</p></div>');
+
+    $(".popup-content").append('<div class="added">'+
+        '<div class="popup-buttons">'+
+            '<button class="button" id="btnPopupSobre">Sobre a Plataforma</button>'+
+            '<button class="button" id="btnPopupHistorico">Histórico</button>'+
+            '<button class="button" id="btnPopupLogOut">Log Out</button>'+
+        '</div>'+
+    '</div>');
+
+    $("#btnPopupSobre").click(function (e) {
+        window.location.href = "./sobrePage.html";
+    });
+
+    $("#btnPopupHistorico").click(function (e) {
+        window.location.href = "./historicoPage.html";
+    });
+
+    $("#btnPopupLogOut").click(function (e) {
+        logout(e);
+    });
+
+    $(".popup-close").prop('disabled',true);
+    $(".popup-close").css('visibility','hidden');
+    
+    disablePopupWrapperClick = true;
+
+    $(".popup-wrapper").css('display', 'block');
+}
 
 function btnEnable(btnName, color="#ffb86c") {
     $(btnName).prop('disabled', false);

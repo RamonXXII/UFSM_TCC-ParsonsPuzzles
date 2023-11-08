@@ -124,11 +124,7 @@
           </div>
         </div>
       </div>
-
-
     </div>
-
-  </div>
 </body>
 
 
@@ -160,6 +156,8 @@
   var submitDate;
   var parson;
   var hasTrinket;
+
+  var disablePopupWrapperClick = false;
 
 
   function displayFeedback(fb) {
@@ -242,8 +240,6 @@
       ).then(response => {
         return response.json();
       }).then(res => {
-        console.log(res);
-
         setUserLevel(res.data.userLevelInfo);
 
         $("#msg-salvando").css('display', 'none');
@@ -281,7 +277,6 @@
     $("#feedbackText").html(" ");
     $("#enunciadoText").append('<div class="added">' + randEx.enunciado + '</div>');
     // Set user level
-    console.log(res)
     setUserLevel(res.userLevelInfo);
 
     $("#btnSubmit").show();
@@ -318,23 +313,26 @@
 
 
   $(document).ready(function () {
-    $("#msg-carregando").css("display","flex");
-    
+    $("#msg-carregando").css("display", "flex");
 
     getExercicioAleatorio(userData).then(res => {
       //////////////////////////////
-      $("#msg-carregando").css("display","none");
+      $("#msg-carregando").css("display", "none");
 
-      setNovoExercicio(res);
+      // TO DO / TODO
+      // Alerta de versão de testes
+      if (typeof res.randExercise == "undefined" || res.userLevelInfo.currentLevel == 2) {
+        showEndOfTestModeAlert(res.userLevelInfo);
+      } else {
+        setNovoExercicio(res);
+      }
 
-      console.log(parson)
-
-      window.addEventListener("beforeunload", function(e) {
-        if(Object.keys(parson.states).length && $("#btnNext").prop('disabled') === true) {
+      window.addEventListener("beforeunload", function (e) {
+        if (Object.keys(parson.states).length && $("#btnNext").prop('disabled') === true) {
           e.preventDefault();
         }
       });
-      
+
 
       // Muda o exercício (GET de um novo exercício)
       $("#btnChangeExercise").click(function (event) {
@@ -384,11 +382,13 @@
       });
 
       $('.popup-wrapper').click(function (e) {
-        const $target = $(e.target)
-        const conditionalToClosePopup = (!$target.is(".popup") && !$target.is($(".popup").children()) && !$target.is(".popup-content") && !$target.is($(".popup-content").children()) && !$target.is(".added") && !$target.is($(".added").children()))
+        if (!disablePopupWrapperClick) {
+          const $target = $(e.target)
+          const conditionalToClosePopup = (!$target.is(".popup") && !$target.is($(".popup").children()) && !$target.is(".popup-content") && !$target.is($(".popup-content").children()) && !$target.is(".added") && !$target.is($(".added").children()))
 
-        if (conditionalToClosePopup) {
-          $(".popup-wrapper").css('display', 'none');
+          if (conditionalToClosePopup) {
+            $(".popup-wrapper").css('display', 'none');
+          }
         }
       });
 

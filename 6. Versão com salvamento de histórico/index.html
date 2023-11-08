@@ -37,7 +37,6 @@
   <script>
     function handleCredentialResponse(response) {
       const googleData = jwtDecode(response.credential)
-      console.log(googleData)
 
       const postData = {
         "actionRequest": "postNovoUsuario",
@@ -62,7 +61,6 @@
       ).then(response => {
         return response.json();
       }).then(res => {
-        console.log(res);
         if (res.status == "success") {
           const auth = {
             "email_verified": googleData.email_verified,
