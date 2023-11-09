@@ -128,15 +128,28 @@ pre {
   margin-left: 3rem;
 }
 
-.menu-icon {
-  font-size: 2.3rem;
+#menu {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-right: 3rem;
-  transition: ease 0.2s;
-  color: #f1f1f1;
 }
 
-.menu-icon:hover {
-  color: #838cb5;
+.menu-link {
+  color: #f1f1f1;
+  transition: ease 0.2s;
+}
+
+.menu-link:hover {
+  color: #a5b1e4;
+}
+
+.menu-link span {
+  margin-right: 1rem;
+}
+
+.menu-icon {
+  font-size: 2.3rem;
 }
 
 /* FEEDBACK RELATED */
@@ -436,7 +449,7 @@ pre {
 
   border-radius: 10px 0px 0px 10px;
 
-  background: #838cb5;
+  background: #869ae4;
 
   visibility: hidden;
   opacity: 0;
@@ -446,7 +459,9 @@ pre {
 #sidebar button {
   cursor: pointer;
 
-  background: #6d7ab6;
+  background: #f7f7f7;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 
   border-bottom: 1px solid #424b6e;
 }
