@@ -104,9 +104,9 @@ function setUserLevel(userLevelInfo) {
     $(".progressbar-progress").css("width",levelPercent);
 }
 
-function showEndOfTestModeAlert(userLevelInfo) {
+function showEndOfTestModeAlert(userData) {
     $(".added").remove();
-    $(".popup-content").append('<div class="added"><h2><i class="fa-solid fa-user-check fa-lg"></i>Parabéns e obrigado pela participação!</h2><p>Parabéns, você chegou ao final da versão de testes ou por chegar no nível máximo atual, ou por realizar todos os exercícios disponíveis até o momento!</p><p>A partir daqui, a plataforma ainda está sendo refinada, portanto o acesso não é recomendado, siga por sua própria conta e risco (se conseguir).</p><p>Deseja ir para página de "Sobre a Plataforma", "Histórico" ou realizar "Log Out"?</p></div>');
+    $(".popup-content").append('<div class="added"><h2><i class="fa-solid fa-user-check fa-lg"></i>Parabéns e obrigado pela participação, '+ userData.name.split(' ')[0] +'!</h2><p>Parabéns, você chegou ao final da versão de testes ou por chegar no nível máximo atual, ou por realizar todos os exercícios disponíveis até o momento!</p><p>A partir daqui, a plataforma ainda está sendo refinada, portanto o acesso não é recomendado, siga por sua própria conta e risco (se conseguir).</p><p>Deseja ir para página de "Sobre a Plataforma", "Histórico" ou realizar "Log Out"?</p></div>');
 
     $(".popup-content").append('<div class="added">'+
         '<div class="popup-buttons">'+

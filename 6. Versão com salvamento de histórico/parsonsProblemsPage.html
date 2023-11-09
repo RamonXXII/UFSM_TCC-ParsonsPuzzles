@@ -327,7 +327,7 @@
       // TO DO / TODO
       // Alerta de versão de testes
       if (typeof res.randExercise == "undefined" || res.userLevelInfo.currentLevel == 2) {
-        showEndOfTestModeAlert(res.userLevelInfo);
+        showEndOfTestModeAlert(userData);
       } else {
         setNovoExercicio(res);
       }
