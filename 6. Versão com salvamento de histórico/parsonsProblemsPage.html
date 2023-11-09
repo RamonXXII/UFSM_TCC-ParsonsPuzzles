@@ -100,6 +100,10 @@
               <span class="loader"></span>
               <span class="icon-text">Salvando...</span>
             </div>
+            <div id="msg-carregando-continua" style="display: none;">
+              <span class="loader"></span>
+              <span class="icon-text">Carregando...</span>
+            </div>
             <button class="button" id="btnSubmit">Run</button>
           </div>
         </div>
@@ -363,9 +367,13 @@
       $("#btnNext").click(function (event) {
         event.preventDefault();
 
+
         btnDisable("#btnNext");
+        $("#btnNext").hide();
+        $("#msg-carregando-continua").css("display", "flex");
 
         getExercicioAleatorio(userData).then(response => {
+          $("#msg-carregando-continua").css("display", "none");
           setNovoExercicio(response);
         });
       });
