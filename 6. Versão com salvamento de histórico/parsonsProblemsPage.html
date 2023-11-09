@@ -212,6 +212,7 @@
     btnDisable("#btnSubmit");
     $("#btnSubmit").hide();
 
+    $("#btnChangeExercise").prop('disabled', true);
     $("#btnReset").prop('disabled', true);
 
     $("#msg-salvando").css('display', 'flex');
@@ -245,15 +246,22 @@
       ).then(response => {
         return response.json();
       }).then(res => {
-        setUserLevel(res.data.userLevelInfo);
+        console.log(res);
+        if (typeof res.data != 'undefined') {
+          setUserLevel(res.data.userLevelInfo);
 
-        $("#msg-salvando").css('display', 'none');
+          $("#btnChangeExercise").prop('disabled', false);
 
-        btnEnable("#btnNext", "#50fa7b");
-        $("#btnNext").show();
-        if (hasTrinket) {
-          btnEnable("#btnTestYourself", "#b184c2");
-          $("#btnTestYourself").show();
+          $("#msg-salvando").css('display', 'none');
+
+          btnEnable("#btnNext", "#50fa7b");
+          $("#btnNext").show();
+          if (hasTrinket) {
+            btnEnable("#btnTestYourself", "#b184c2");
+            $("#btnTestYourself").show();
+          }
+        } else {
+          window.alert("Algo deu errado :/\nRecarregue a página.");
         }
       });
     } catch (error) {
