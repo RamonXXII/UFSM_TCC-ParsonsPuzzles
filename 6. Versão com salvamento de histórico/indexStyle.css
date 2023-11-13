@@ -50,6 +50,15 @@ a {
   margin-left: 10px;
 }
 
+.login-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: xx-large;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+}
+
 /* NAVBAR */
 
 
