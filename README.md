@@ -1,7 +1,5 @@
-# TCC-ParsonsPuzzles <img src="https://github.com/joaov230/_UFSM_TCC-ParsonsPuzzles/assets/37089511/33d7afd2-5892-496c-921b-a3b8dbd4af4c" width="60">
+# TCC-ParsonsPuzzles <img src="https://github.com/joaov230/_UFSM_TCC-ParsonsPuzzles/assets/37089511/33d7afd2-5892-496c-921b-a3b8dbd4af4c" width="30">
 
-
- 
 Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o Trabalho de Conclusão de Curso do (ex)aluno, agora graduado, João Vitor Forgearini Beltrame.
 
 
