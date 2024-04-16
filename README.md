@@ -6,13 +6,13 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 
 |            Etapa           |
 |----------------------------|
-| [Aprendendo a usar js-parsons e desenvolvendo alguns problemas próprios utilizando o site oficial como norte](/1.%20Aprendendo%20js-parsons/) |
-| [Testando JS-Parsons com uma UI um pouco mais amigável](/2.%20Testando%20js-parsons%20(com%20UI)/) |
-| [Testando com vários tipos diferentes de exercícios (testes unitários e vartests)](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
-| [Versão com back e front-end, API com exercícios, remodelando o UI para ser mais amigável](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
-| [Autenticação de usuário utilizando Google OAuth 2.0 adicionado](/5.%20Versão%20com%20back-end%20e%20autenticação%20de%20usuário/) |
-| [Salvamento de histórico adicionado e funcional](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
-| [Hotjar (para testes com usuários) adicionado](/7.%20Hotjar%20adicionado/) |
+| [1. Aprendendo a usar js-parsons e desenvolvendo alguns problemas próprios utilizando o site oficial como norte](/1.%20Aprendendo%20js-parsons/) |
+| [2. Testando JS-Parsons com uma UI um pouco mais amigável](/2.%20Testando%20js-parsons%20(com%20UI)/) |
+| [3. Testando com vários tipos diferentes de exercícios (testes unitários e vartests)](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
+| [4. Versão com back e front-end, API com exercícios, remodelando o UI para ser mais amigável](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
+| [5. Autenticação de usuário utilizando Google OAuth 2.0 adicionado](/5.%20Versão%20com%20back-end%20e%20autenticação%20de%20usuário/) |
+| [6. Salvamento de histórico adicionado e funcional](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
+| [7. Hotjar (para testes com usuários) adicionado](/7.%20Hotjar%20adicionado/) |
 
 ## Anotações importantes sobre o uso de JS-Parsons
 
