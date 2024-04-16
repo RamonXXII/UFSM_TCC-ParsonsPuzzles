@@ -1,6 +1,7 @@
-# TCC-ParsonsPuzzles
+# TCC-ParsonsPuzzles ![logoicon](https://github.com/joaov230/_UFSM_TCC-ParsonsPuzzles/assets/37089511/33d7afd2-5892-496c-921b-a3b8dbd4af4c)
  
 Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o Trabalho de Conclusão de Curso do (ex)aluno, agora graduado, João Vitor Forgearini Beltrame.
+
 
 
 
@@ -13,7 +14,9 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 | 5. Autenticação de usuário utilizando Google OAuth 2.0 adicionado. [Clique aqui.](/5.%20Versão%20com%20back-end%20e%20autenticação%20de%20usuário/) |
 | 6. Salvamento de histórico adicionado e funcional. [Clique aqui.](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
 | 7. Hotjar (para testes com usuários) adicionado. [Clique aqui.](/7.%20Hotjar%20adicionado/) |
+| 8. Deploy oficial da primeira versão. [Clique aqui.](/8.%20Deploy%20Oficial%201.0) |
 
+Para continuar acompanhando as próximas versões, vá para o repositório do GitHub Pages [joaov230.github.io](https://github.com/joaov230/joaov230.github.io).
 Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
 
 
