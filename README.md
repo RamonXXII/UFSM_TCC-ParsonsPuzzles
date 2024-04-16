@@ -1,8 +1,8 @@
 # <img src="https://github.com/joaov230/_UFSM_TCC-ParsonsPuzzles/assets/37089511/33d7afd2-5892-496c-921b-a3b8dbd4af4c" width="25"> TCC-ParsonsPuzzles  
 
-Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o Trabalho de Conclusão de Curso do (ex)aluno, agora graduado, João Vitor Forgearini Beltrame.
+Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o Trabalho de Conclusão de Curso do (ex)aluno, agora graduado em Ciência da Computação pela UFSM, João Vitor Forgearini Beltrame.
 
-
+![DemonstracaoTCC1-min](https://github.com/joaov230/_UFSM_TCC-ParsonsPuzzles/assets/37089511/bac3392f-95b5-4aab-b2f2-860e4fcab5cc)
 
 
 |            Etapa           |
