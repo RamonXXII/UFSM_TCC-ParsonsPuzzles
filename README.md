@@ -6,13 +6,13 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 
 |            Etapa           |
 |----------------------------|
-| [1. Aprendendo a usar js-parsons e desenvolvendo alguns problemas próprios utilizando o site oficial como norte](/1.%20Aprendendo%20js-parsons/) |
-| [2. Testando JS-Parsons com uma UI um pouco mais amigável](/2.%20Testando%20js-parsons%20(com%20UI)/) |
-| [3. Testando com vários tipos diferentes de exercícios (testes unitários e vartests)](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
-| [4. Versão com back e front-end, API com exercícios, remodelando o UI para ser mais amigável](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
-| [5. Autenticação de usuário utilizando Google OAuth 2.0 adicionado](/5.%20Versão%20com%20back-end%20e%20autenticação%20de%20usuário/) |
-| [6. Salvamento de histórico adicionado e funcional](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
-| [7. Hotjar (para testes com usuários) adicionado](/7.%20Hotjar%20adicionado/) |
+| 1. Aprendendo a usar js-parsons e desenvolvendo alguns problemas próprios utilizando o site oficial como norte. [Clique aqui.](/1.%20Aprendendo%20js-parsons/) |
+| 2. Testando JS-Parsons com uma UI um pouco mais amigável. [Clique aqui.](/2.%20Testando%20js-parsons%20(com%20UI)/) |
+| 3. Testando com vários tipos diferentes de exercícios (testes unitários e vartests). [Clique aqui.](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
+| 4. Versão com back e front-end, API com exercícios, remodelando o UI para ser mais amigável. [Clique aqui.](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
+| 5. Autenticação de usuário utilizando Google OAuth 2.0 adicionado. [Clique aqui.](/5.%20Versão%20com%20back-end%20e%20autenticação%20de%20usuário/) |
+| 6. Salvamento de histórico adicionado e funcional. [Clique aqui.](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
+| 7. Hotjar (para testes com usuários) adicionado. [Clique aqui.](/7.%20Hotjar%20adicionado/) |
 
 Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
 
@@ -28,6 +28,7 @@ Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
 --------------------------
 ## "Documentação"
 _Como a documentação oficial da biblioteca js-parsons é, por vezes, incompleta e parte dela se encontra dentro do código da lib, em forma de comentários, resumi abaixo algumas informações importantes sobre o uso da biblioteca._  
+
 _**Atenção**: A biblioteca oficial **não possui suporte para feedback em português brasileiro, então eu mesmo o adicionei** nos arquivos da biblioteca para utilizar neste TCC. **Para acessar essa versão da lib, é só [clicar aqui](/0.%20Versão%20do%20js-parsons%20utilizada/).** Para utilizá-la, basta colocá-la na pasta do seu projeto e incluir o caminho relativo das mesmas nas suas importações no código._  
 
 **Argumentos a serem mandados para a função ```new ParsonsWidget()``` em forma de objeto**  
