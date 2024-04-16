@@ -1,6 +1,6 @@
 # TCC-ParsonsPuzzles
  
-Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC. Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
+Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o Trabalho de Conclusão de Curso do (ex)aluno, agora graduado, João Vitor Forgearini Beltrame.
 
 
 
@@ -14,6 +14,9 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 | [6. Salvamento de histórico adicionado e funcional](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
 | [7. Hotjar (para testes com usuários) adicionado](/7.%20Hotjar%20adicionado/) |
 
+Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
+
+
 ## Anotações importantes sobre o uso de JS-Parsons
 
 **Caso queira testar o valor de retorno e ver se uma função está executando da forma certa**  
@@ -25,6 +28,7 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
 --------------------------
 ## "Documentação"
 _Como a documentação oficial da biblioteca js-parsons é, por vezes, incompleta e parte dela se encontra dentro do código da lib, em forma de comentários, resumi abaixo algumas informações importantes sobre o uso da biblioteca._  
+_**Atenção**: A biblioteca oficial **não possui suporte para feedback em português brasileiro, então eu mesmo o adicionei** nos arquivos da biblioteca para utilizar neste TCC. **Para acessar essa versão da lib, é só [clicar aqui](/0.%20Versão%20do%20js-parsons%20utilizada/).** Para utilizá-la, basta colocá-la na pasta do seu projeto e incluir o caminho relativo das mesmas nas suas importações no código._  
 
 **Argumentos a serem mandados para a função ```new ParsonsWidget()``` em forma de objeto**  
 
@@ -33,7 +37,13 @@ _Como a documentação oficial da biblioteca js-parsons é, por vezes, incomplet
 * ```'lang'```: A biblioteca possui vários idiomas disponíveis para feedback, avisos, etc, e foi adicionado mais um *(ptbr)* para o uso neste trabalho.
 * ```'max_wrong_lines'```: O máximo de linhas erradas (distratores) que serão mostradas pro usuário. Caso você tenha colocado mais de ```<max_wrong_lines>``` distratores, o script irá escolher a quantidade ```<max_wrong_lines>``` deles aleatóriamente para mostrar ao usuário.
 * ```'feedback_cb'```: Referência à uma função definida por você para mostrar os erros retornados do exercício, caso haja algum. Exemplo:
-<img src="/assets/displayErrors.png" width="650"> 
+    ```javascript
+    function displayErrors(fb) {
+      if (fb.errors.length > 0) {
+        alert(fb.errors[0]);
+      }
+    }
+    ```
 
 * ```'unittests'```: Os testes unitários a serem realizados (para ver como são feitos, veja [toggle-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-example.html) e [unittestexample.html](/1.%20Aprendendo%20js-parsons/examples/unittestexample.html)).
 * ```'initcode'```: Código a ser executado antes do código do desafio.
@@ -42,10 +52,20 @@ _Como a documentação oficial da biblioteca js-parsons é, por vezes, incomplet
   * A ```class``` no código do desafio deve ser definida com ```jsparsons-toggle```.
   * O ```data-type``` no código do desafio deve ter o mesmo nome do objeto que contem a lista de variáveis a serem escolhidas, veja as imagens abaixo.
   *A definição é feita desta forma no meio do código a ser embaralhado:*  
-  <img src="/assets/toggleTypeHandlersExemplo2.png" width="650"> 
+  ```javascript
+  "return <span class='jsparsons-toggle' data-type='abc'></span>\n"
+  ```
 
   *A chamada é feita desta forma:*
-  <img src="/assets/toggleTypeHandlersExemplo.png" width="650"> 
+  ```javascript
+  var parson = new ParsonsWidget({
+    'sortableId':'sortable',
+    'trashId':'sortableTrash',
+    'unittests':unittests,
+    'lang':'ptbr',
+    'toggleTypeHandlers': { abc: ["a", "b", "c"] }
+  });
+  ```
 
   * O ```'toggleTypeHandlers'``` possui alguns tipos padrão já definidos, são eles:
     ```javascript
@@ -59,7 +79,9 @@ _Como a documentação oficial da biblioteca js-parsons é, por vezes, incomplet
     Para estes, não é preciso definir seus valores no ```toggleTypeHandlers```, apenas settar o ```data-type``` como ```boolean```, ```compop```, ```mathop``` ou ```boolop```.
 * ```'message'```: Uma mensagem textual do teste que seu código será submetido, para ser mostrada ao usuário.
 * ```'vartests'```: Lista de objetos com os dados necessários para fazer testes de valores com variáveis, para verificar se variável ```x``` está com valor ```2``` após a execução do código, por exemplo. (ver [toggle-variable-grader-example.html](/1.%20Aprendendo%20js-parsons/examples/toggle-variable-grader-example.html))
-<img src="/assets/vartestsExemplo.png" width="650">
+```javascript
+  'vartests': [{ unitcode: "x = 0\ny = 0", code: "", message: "Testing with initial variable values x = 0 and y = 2", variables: {x: 2} }];
+  ```
 
   **Aqui você pode enviar:**
   * ```'variables'```: Um objeto com as propriedades para cada variável que será testada.
