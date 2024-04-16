@@ -2,12 +2,17 @@
  
 Nesse repositório será armazenado o progresso do ambiente web desenvolvido para o TCC. Mais informações sobre o design [clicando aqui](/Testando%20Designs/).
 
+
+
 |            Etapa           |
 |----------------------------|
-| [Entender e aprender a usar js-parsons e desenvolver alguns problemas próprios usando o site oficial como norte.](/1.%20Aprendendo%20js-parsons/) |
-| [Testar JS-Parsons com uma UI um pouco mais amigável.](/2.%20Testando%20js-parsons%20(com%20UI)/) |
-| [Testar com vários tipos diferentes de exercícios (testes unitários e vartests) e publicar na web de alguma forma.](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
-| [Versão com Back e Front end, API com exercícios, remodelar o front para ser mais amigável](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
+| [Aprendendo a usar js-parsons e desenvolvendo alguns problemas próprios utilizando o site oficial como norte](/1.%20Aprendendo%20js-parsons/) |
+| [Testando JS-Parsons com uma UI um pouco mais amigável](/2.%20Testando%20js-parsons%20(com%20UI)/) |
+| [Testando com vários tipos diferentes de exercícios (testes unitários e vartests)](/3.%20Versão%20do%20deploy%20e%20interpretador%20online/) |
+| [Versão com back e front-end, API com exercícios, remodelando o UI para ser mais amigável](/4.%20TODO%20Versão%20com%20backend%20e%20interpretador%20online/) |
+| [Autenticação de usuário utilizando Google OAuth 2.0 adicionado](/5.%20Versão%20com%20back-end%20e%20autenticação%20de%20usuário/) |
+| [Salvamento de histórico adicionado e funcional](/6.%20Versão%20com%20salvamento%20de%20histórico/) |
+| [Hotjar (para testes com usuários) adicionado](/7.%20Hotjar%20adicionado/) |
 
 ## Anotações importantes sobre o uso de JS-Parsons
 
@@ -19,6 +24,8 @@ Nesse repositório será armazenado o progresso do ambiente web desenvolvido par
   
 --------------------------
 ## "Documentação"
+_Como a documentação oficial da biblioteca js-parsons é, por vezes, incompleta e parte dela se encontra dentro do código da lib, em forma de comentários, resumi abaixo algumas informações importantes sobre o uso da biblioteca._  
+
 **Argumentos a serem mandados para a função ```new ParsonsWidget()``` em forma de objeto**  
 
 * ```'trashId'```: O ID usado na ```<div>``` HTML que vai conter os elementos a serem organizados.
